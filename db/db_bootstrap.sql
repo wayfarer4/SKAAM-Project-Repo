@@ -12,7 +12,7 @@ create database occupy_db;
 -- to change it here too.
 grant all privileges on occupy_db.* to 'webapp'@'%';
 flush privileges;
-
+#
 -- Move into the database we just created.
 -- TODO: If you changed the name of the database above, you need to
 -- change it here too. 
