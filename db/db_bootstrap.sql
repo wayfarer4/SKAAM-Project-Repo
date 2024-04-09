@@ -12,7 +12,7 @@ create database occupy_db;
 -- to change it here too.
 grant all privileges on occupy_db.* to 'webapp'@'%';
 flush privileges;
-#
+
 -- Move into the database we just created.
 -- TODO: If you changed the name of the database above, you need to
 -- change it here too. 
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS Student (
     FirstName  VARCHAR(50)     NOT NULL,
     MiddleName VARCHAR(50),
     LastName   VARCHAR(50)     NOT NULL,
-    isClubLead BOOLEAN DEFAULT false # changed to false -Melissa
+    isClubLead BOOLEAN DEFAULT false 
 );
 
 
@@ -147,11 +147,11 @@ CREATE TABLE IF NOT EXISTS BookingDetails (
     BookingNameEvent VARCHAR(75),
     PRIMARY KEY (BookingId, BookingNameEvent),
     BookingTime DATETIME NOT NULL,
-    CheckedIn DATETIME, # removed NOT NULL so NULL is a default before user checks in -Melissa
-    BookingLength TIME NOT NULL, # Added attribute - Melissa
+    CheckedIn DATETIME,  
+    BookingLength TIME NOT NULL, 
     CONSTRAINT fk10
         FOREIGN KEY (BookingId) REFERENCES Booking (BookingId)
-        ON UPDATE cascade ON DELETE cascade # changed to ON DELETE cascade so user can cancel a booking
+        ON UPDATE cascade ON DELETE cascade 
 );
 
 
