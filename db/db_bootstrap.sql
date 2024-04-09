@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS Class
 (
     CourseId   int PRIMARY KEY,
     ClassName  VARCHAR(50),
-    middleName VARCHAR(50),
     StaffId    int,
     CONSTRAINT fk01
         FOREIGN KEY (StaffId) REFERENCES Professor (StaffId)
