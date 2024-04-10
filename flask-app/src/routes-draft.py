@@ -89,25 +89,15 @@ def update_booking_length():
 ### ROUTE 4 FOR BOOKING
 # DELETE FROM BookingDetails
 # WHERE BookingId = 1; -- Cancel booking; 1.6
-#@booking.route('/booking/route4', methods=['POST'])
+#@booking.route('/booking/route4', methods=['DELETE'])
 def cancel_booking():
     
     # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
 
-    #extracting the variable
-    name = the_data['product_name']
-    description = the_data['product_description']
-    price = the_data['product_price']
-    category = the_data['product_category']
-
     # Constructing the query
-    query = 'insert into products (product_name, description, category, list_price) values ("'
-    query += name + '", "'
-    query += description + '", "'
-    query += category + '", '
-    query += str(price) + ')'
+    query = 'DELETE FROM BookingDetails WHERE BookingId = %s'
     current_app.logger.info(query)
 
     # executing and committing the insert statement 
@@ -115,7 +105,4 @@ def cancel_booking():
     cursor.execute(query)
     db.get_db().commit()
     
-    return 'Success!'
-
-
-# -----
+    return 'booking canceled!'
