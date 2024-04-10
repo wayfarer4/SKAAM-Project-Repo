@@ -1,6 +1,27 @@
+from flask import Blueprint, request, jsonify, make_response, current_app
+import json
+from src import db
+
+people = Blueprint('people', __name__)
+
+### ROUTE 1 FOR PEOPLE
 #UPDATE Space
 #SET isAvailable = false
 #WHERE SpaceId = 4; -- Book a space; 1.1 Part 1
+
+# Add a PUT /Booking route that will update the booking details information
+@people.route('/bookings/route1', methods=['PUT'])
+def book_space():
+    space_info = request.json
+    current_app.logger.info(space_info)
+    isAvailable= space_info['isAvailable']
+
+    query = 'UPDATE Space SET isAvailable = %s where SpaceId = %s'
+    data = (isAvailable)
+    cursor = db.get_db().cursor()
+    r = cursor.execute(query, data)
+    db.get_db().commit()
+    return 'check in time updated!'
 
 
 #INSERT INTO Booking(BookingId, SpaceId, NUId)
