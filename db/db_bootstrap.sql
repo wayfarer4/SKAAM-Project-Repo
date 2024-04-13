@@ -21,7 +21,7 @@ use occupy_db;
 -- Put your DDL 
 CREATE TABLE IF NOT EXISTS Professor
 (
-    StaffId    int PRIMARY KEY,
+    StaffId    VARCHAR(15) PRIMARY KEY,
     Email      VARCHAR(75)     NOT NULL,
     FirstName  VARCHAR(50)     NOT NULL,
     MiddleName VARCHAR(50),
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS Building (
 );
 
 
-CREATE TABLE IF NOT EXISTS Space
+CREATE TABLE IF NOT EXISTS Spaces
 (
     SpaceId   int PRIMARY KEY,
     BuildingId  int,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS Classroom (
         FOREIGN KEY (StaffId) REFERENCES ITPerson (StaffId)
         ON UPDATE cascade ON DELETE restrict,
      CONSTRAINT fk05
-        FOREIGN KEY (SpaceId) REFERENCES Space (SpaceId)
+        FOREIGN KEY (SpaceId) REFERENCES Spaces (SpaceId)
         ON UPDATE cascade ON DELETE restrict
 );
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS Booking (
         FOREIGN KEY (NUId) REFERENCES Student (NUId)
         ON UPDATE cascade ON DELETE restrict,
     CONSTRAINT fk09
-        FOREIGN KEY (SpaceId) REFERENCES Space (SpaceId)
+        FOREIGN KEY (SpaceId) REFERENCES Spaces (SpaceId)
         ON UPDATE cascade ON DELETE restrict
 );
 
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS SpaceCleaners (
     CleanerId int,
     PRIMARY KEY (SpaceId, CleanerId),
     CONSTRAINT fk11
-        FOREIGN KEY (SpaceId) REFERENCES Space (SpaceId)
+        FOREIGN KEY (SpaceId) REFERENCES Spaces (SpaceId)
         ON UPDATE cascade ON DELETE restrict,
      CONSTRAINT fk12
         FOREIGN KEY (CleanerId) REFERENCES Cleaner (CleanerId)
@@ -603,7 +603,7 @@ INSERT INTO Cleaner(CleanerId,FirstName,LastName,Email,MiddleName,Phone) VALUES
 ,(5692688662,'Mallorie','Suff','msuff1m@squidoo.com','Mélodie','189-399-7382')
 ,(2227752904,'Kaycee','Bamblett','kbamblett1n@psu.edu','Laïla','975-812-4784');
 
-INSERT INTO Space(SpaceId,BuildingId,IsInAcademicBuilding,IsAvailable) VALUES
+INSERT INTO Spaces(SpaceId,BuildingId,IsInAcademicBuilding,IsAvailable) VALUES
  (0226266095,'01HV2J98EWZJTM282F5P0HK162',false,true)
 ,(8359948771,'01HV2J92FTE1A8VA0457ZS17EQ',true,false)
 ,(0525262342,'01HV2J9C28ZHH6GN5G9C0KAVVF',true,true)
