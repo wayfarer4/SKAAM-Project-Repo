@@ -10,7 +10,7 @@ people = Blueprint('people', __name__)
 #WHERE SpaceId = 4; -- Book a space; 1.1 Part 1
 
 # Add a PUT /Booking route that will update the booking details information
-@people.route('/bookings/route1', methods=['PUT'])
+@people.route('/people/route1', methods=['PUT'])
 def updateSpace():
     space_info = request.json
     current_app.logger.info(space_info)
@@ -26,7 +26,7 @@ def updateSpace():
 
 #INSERT INTO Booking(BookingId, SpaceId, NUId)
 #VALUES (4, 4, 1001); -- Book a space; 1.1 Part 2
-@people.route('/bookings/route2', methods=['POST'])
+@people.route('/people/route2', methods=['POST'])
 def book_space():
     # collecting data from the request object 
     the_data = request.json
@@ -56,7 +56,7 @@ def book_space():
 
 #INSERT INTO BookingDetails(BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength)
 #VALUES (4, 'Study', '2024-04-03 4:00:00', NULL, '01:00:00'); -- Book a space; 1.1 Part 3
-@people.route('/bookings/route3', methods=['POST'])
+@people.route('/people/route3', methods=['POST'])
 def book_space_details():
     # collecting data from the request object 
     the_data = request.json
@@ -86,9 +86,6 @@ def book_space_details():
     return 'Success!'
     
 
-
-
-
 #SELECT BookingNameEvent, CheckedIn, BookingTime
 #FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
 #JOIN Classroom C2 on c.CourseId = C2.CourseId
@@ -96,6 +93,24 @@ def book_space_details():
 #JOIN Booking B on S.SpaceId = B.SpaceId
 #JOIN BookingDetails BD on B.BookingId = BD.BookingId
 #WHERE p.StaffId = 1; -- View professor's own booking details; 2.1
+@people.route('/people/route4', methods=['GET'])
+def prof_view_booking_details(profId):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT BookingNameEvent, CheckedIn, BookingTime FROM Professor p JOIN Class c ON' 
+                   + ' p.StaffId = c.StaffId JOIN Classroom C2 on c.CourseId = C2.CourseId JOIN Space S'
+                    + ' on C2.SpaceId = S.SpaceId JOIN Booking B on S.SpaceId = B.SpaceId JOIN '
+                    + 'BookingDetails BD on B.BookingId = BD.BookingId WHERE p.StaffId = ' + str(profId))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
 
 
 #SELECT Email
@@ -105,7 +120,22 @@ def book_space_details():
 #JOIN Building b ON S.BuildingID = b.BuildingID
 #JOIN BuildingManager m ON b.StaffID = m.StaffID
 #WHERE p.StaffId = 1; -- Call Building Manager; 2.2
-
+@people.route('/people/route5', methods=['GET'])
+def prof_view_building_manager(profId):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT Email FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
+                   + ' JOIN Space S ON C2.SpaceId = S.SpaceId JOIN Building b ON S.BuildingID = b.BuildingID'
+                    + ' JOIN BuildingManager m ON b.StaffID = m.StaffID'
+                    + ' WHERE p.StaffId = ' + str(profId))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 #SELECT Phone
 #FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
@@ -114,13 +144,44 @@ def book_space_details():
 #JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId
 #JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID
 #WHERE p.StaffId = 1; -- Report an incident; 2.3
+@people.route('/people/route6', methods=['GET'])
+def prof_view_cleaner(profId):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT Phone FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
+                   + ' JOIN Space S ON C2.SpaceId = S.SpaceId JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID'
+                    + ' JOIN BuildingManager m ON b.StaffID = m.StaffID'
+                    + ' WHERE p.StaffId = ' + str(profId))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 
 #SELECT PhoneNum
-#FROM Pro fessor p JOIN Class c ON p.StaffId = c.StaffId
+#FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
 #JOIN Classroom C2 ON c.CourseId = C2.CourseId
 #JOIN ITPerson i ON C2.StaffId
 #WHERE p.StaffId  = 1; -- Call IT; 2.4
+@people.route('/people/route6', methods=['GET'])
+def prof_view_assigned_it(profId):
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT PhoneNum FROM Professor p JOIN Class c ON p.StaffId = c.StaffId' 
+                   + ' JOIN Classroom C2 ON c.CourseId = C2.CourseId JOIN ITPerson i ON C2.StaffId'
+                    + ' WHERE p.StaffId = ' + str(profId))
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 
 # NOTE: for recurring meetings, I want this to be 
