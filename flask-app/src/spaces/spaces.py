@@ -46,6 +46,23 @@ def delete_space():
     cursor.execute(query)
     db.get_db().commit()
 
+def remove_space():
+    
+    # collecting data from the request object 
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    # Constructing the query
+    query = 'DELETE FROM Space WHERE SpaceId = %s'
+    current_app.logger.info(query)
+
+    # executing and committing the insert statement 
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    
+    return 'space removed!'
+
 
 #UPDATE Space
 #SET isAvailable = false
@@ -67,7 +84,7 @@ def update_space():
 #FROM Space
 #WHERE isAvailable =True; -- View all available rooms; 3.4
 @spaces.route('/spaces/route5', methods=['GET'])
-def get_avail_spaces():
+def get_avail_spaces_conditions():
     cursor = db.get_db().cursor()
     cursor.execute('select SpaceId, Space.isAvailable as Available \
                     from customers WHERE IsAvailable = TRUE')
