@@ -56,7 +56,35 @@ def book_space():
 
 #INSERT INTO BookingDetails(BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength)
 #VALUES (4, 'Study', '2024-04-03 4:00:00', NULL, '01:00:00'); -- Book a space; 1.1 Part 3
+@people.route('/bookings/route3', methods=['POST'])
+def book_space_details():
+    # collecting data from the request object 
+    the_data = request.json
+    current_app.logger.info(the_data)
 
+    #extracting the variable
+    bookingid = the_data['booking_id']
+    bookingName = the_data['booking_name_event']
+    bookingTime = the_data['nuid']
+    checkedin = the_data['checked_in']
+    bookingLength = the_data['booking_length']
+
+    # Constructing the query
+    query = 'insert into BookingsDetails (BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength) values ("'
+    query += str(bookingid) + '", "'
+    query += bookingName + '", "'
+    query += str(bookingTime) + '", "'
+    query += str(checkedin) + '", "'
+    query += str(bookingLength) + ')'
+    current_app.logger.info(query)
+
+    # executing and committing the insert statement 
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    
+    return 'Success!'
+    
 
 
 
