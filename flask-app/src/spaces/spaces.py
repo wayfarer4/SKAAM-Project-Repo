@@ -40,7 +40,7 @@ def get_avail_spaces():
 #SELECT SpaceId, Space.isAvailable as Available
 #FROM Space
 #WHERE isAvailable =True; -- View all available rooms; 3.4
-@spaces.route('/spaces/route1', methods=['GET'])
+@spaces.route('/spaces/route5', methods=['GET'])
 def get_avail_spaces():
     cursor = db.get_db().cursor()
     cursor.execute('select SpaceId, Space.isAvailable as Available \
