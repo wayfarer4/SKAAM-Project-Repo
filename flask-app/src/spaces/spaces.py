@@ -52,7 +52,18 @@ def remove_space():
 #UPDATE Space
 #SET isAvailable = false
 #WHERE SpaceId = 3; -- Update a room to be offline; 3.3
+@spaces.route('/sapces/route4', methods=['PUT'])
+def update_space():
+    spaces_info = request.json
+    current_app.logger.info(spaces_info)
+    IsAvailable = spaces_info['IsAvailble']
 
+    query = 'UPDATE Space SET IsAvailable = false WHERE SpaceId = %s'
+    data = (IsAvailable)
+    cursor = db.get_db().cursor()
+    r = cursor.execute(query, data)
+    db.get_db().commit()
+    return 'room offline'
 
 #SELECT SpaceId, Space.isAvailable as Available
 #FROM Space
