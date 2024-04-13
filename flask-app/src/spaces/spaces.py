@@ -31,21 +31,6 @@ def get_avail_spaces():
 #DELETE FROM Space
 #   WHERE SpaceId = 4; -- Removing a space; 3.2
 @spaces.route('/spaces/route3', methods=['DELETE'])
-def delete_space():
-    
-    # collecting data from the request object 
-    the_data = request.json
-    current_app.logger.info(the_data)
-
-    # Constructing the query
-    query = 'DELETE FROM Space WHERE SpaceId = %s'
-    current_app.logger.info(query)
-
-    # executing and committing the insert statement 
-    cursor = db.get_db().cursor()
-    cursor.execute(query)
-    db.get_db().commit()
-
 def remove_space():
     
     # collecting data from the request object 
@@ -53,7 +38,7 @@ def remove_space():
     current_app.logger.info(the_data)
 
     # Constructing the query
-    query = 'DELETE FROM Space WHERE SpaceId = %s'
+    query = 'DELETE FROM Space WHERE SpacegId = %s'
     current_app.logger.info(query)
 
     # executing and committing the insert statement 
@@ -73,7 +58,7 @@ def remove_space():
 #FROM Space
 #WHERE isAvailable =True; -- View all available rooms; 3.4
 @spaces.route('/spaces/route5', methods=['GET'])
-def get_avail_spaces_conditions():
+def get_avail_spaces():
     cursor = db.get_db().cursor()
     cursor.execute('select SpaceId, Space.isAvailable as Available \
                     from customers WHERE IsAvailable = TRUE')
