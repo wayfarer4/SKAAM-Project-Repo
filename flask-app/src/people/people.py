@@ -11,7 +11,7 @@ people = Blueprint('people', __name__)
 
 # Add a PUT /Booking route that will update the booking details information
 @people.route('/bookings/route1', methods=['PUT'])
-def book_space():
+def updateSpace():
     space_info = request.json
     current_app.logger.info(space_info)
     isAvailable= space_info['isAvailable']
@@ -26,6 +26,32 @@ def book_space():
 
 #INSERT INTO Booking(BookingId, SpaceId, NUId)
 #VALUES (4, 4, 1001); -- Book a space; 1.1 Part 2
+@people.route('/bookings/route2', methods=['POST'])
+def book_space():
+    # collecting data from the request object 
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    #extracting the variable
+    bookingid = the_data['booking_id']
+    spaceid = the_data['space_id']
+    nuid = the_data['nuid']
+
+    # Constructing the query
+    query = 'insert into Bookings (BookingId, SpaceId, NUId) values ("'
+    query += str(bookingid) + '", "'
+    query += str(spaceid) + '", "'
+    query += str(nuid) + ')'
+    current_app.logger.info(query)
+
+    # executing and committing the insert statement 
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    
+    return 'Success!'
+    
+    
 
 
 #INSERT INTO BookingDetails(BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength)
