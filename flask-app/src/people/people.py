@@ -16,7 +16,7 @@ def updateSpace():
     current_app.logger.info(space_info)
     isAvailable= space_info['isAvailable']
 
-    query = 'UPDATE Space SET isAvailable = %s where SpaceId = %s'
+    query = 'UPDATE Spaces SET isAvailable = %s where SpaceId = %s'
     data = (isAvailable)
     cursor = db.get_db().cursor()
     r = cursor.execute(query, data)
@@ -94,12 +94,12 @@ def book_space_details():
 #JOIN BookingDetails BD on B.BookingId = BD.BookingId
 #WHERE p.StaffId = 1; -- View professor's own booking details; 2.1
 @people.route('/people/route4', methods=['GET'])
-def prof_view_booking_details(profId):
+def prof_view_booking_details():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT BookingNameEvent, CheckedIn, BookingTime FROM Professor p JOIN Class c ON' 
-                   + ' p.StaffId = c.StaffId JOIN Classroom C2 on c.CourseId = C2.CourseId JOIN Space S'
+                   + ' p.StaffId = c.StaffId JOIN Classroom C2 on c.CourseId = C2.CourseId JOIN Spaces S'
                     + ' on C2.SpaceId = S.SpaceId JOIN Booking B on S.SpaceId = B.SpaceId JOIN '
-                    + 'BookingDetails BD on B.BookingId = BD.BookingId WHERE p.StaffId = ' + str(profId))
+                    + 'BookingDetails BD on B.BookingId = BD.BookingId WHERE p.StaffId = ' + str(2958467899))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -124,7 +124,7 @@ def prof_view_booking_details(profId):
 def prof_view_building_manager(profId):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT Email FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
-                   + ' JOIN Space S ON C2.SpaceId = S.SpaceId JOIN Building b ON S.BuildingID = b.BuildingID'
+                   + ' JOIN Spaces S ON C2.SpaceId = S.SpaceId JOIN Building b ON S.BuildingID = b.BuildingID'
                     + ' JOIN BuildingManager m ON b.StaffID = m.StaffID'
                     + ' WHERE p.StaffId = ' + str(profId))
     row_headers = [x[0] for x in cursor.description]
@@ -148,7 +148,7 @@ def prof_view_building_manager(profId):
 def prof_view_cleaner(profId):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT Phone FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
-                   + ' JOIN Space S ON C2.SpaceId = S.SpaceId JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID'
+                   + ' JOIN Spaces S ON C2.SpaceId = S.SpaceId JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID'
                     + ' JOIN BuildingManager m ON b.StaffID = m.StaffID'
                     + ' WHERE p.StaffId = ' + str(profId))
     row_headers = [x[0] for x in cursor.description]
@@ -167,12 +167,12 @@ def prof_view_cleaner(profId):
 #JOIN Classroom C2 ON c.CourseId = C2.CourseId
 #JOIN ITPerson i ON C2.StaffId
 #WHERE p.StaffId  = 1; -- Call IT; 2.4
-@people.route('/people/route6', methods=['GET'])
-def prof_view_assigned_it(profId):
+@people.route('/people/route7', methods=['GET'])
+def prof_view_assigned_it():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT PhoneNum FROM Professor p JOIN Class c ON p.StaffId = c.StaffId' 
                    + ' JOIN Classroom C2 ON c.CourseId = C2.CourseId JOIN ITPerson i ON C2.StaffId'
-                    + ' WHERE p.StaffId = ' + str(profId))
+                    + ' WHERE p.StaffId = ' + str(7661382628))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

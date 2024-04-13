@@ -11,7 +11,21 @@ spaces = Blueprint('spaces', __name__)
 def get_avail_spaces():
     cursor = db.get_db().cursor()
     cursor.execute('select * \
-                    from customers WHERE IsAvailable = TRUE')
+                    from Spaces WHERE IsAvailable = TRUE')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+@spaces.route('/spaces/tst', methods=['GET'])
+def get_avail_spaces_tst():
+    cursor = db.get_db().cursor()
+    cursor.execute('select * from Professor')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -34,7 +48,7 @@ def add_space():
     SpaceId = the_data['SpaceId']
     BuildingId = the_data['BuildingId']
 
-    query = 'insert into Space (SpaceId, BuildingId)'
+    query = 'insert into Spaces (SpaceId, BuildingId)'
     query += str(SpaceId) + '","'
     query += str(BuildingId) + '","'
     current_app.logger.info(query)
@@ -58,7 +72,7 @@ def delete_space():
     current_app.logger.info(the_data)
 
     # Constructing the query
-    query = 'DELETE FROM Space WHERE SpaceId = %s'
+    query = 'DELETE FROM Spaces WHERE SpaceId = %s'
     current_app.logger.info(query)
 
     # executing and committing the insert statement 
@@ -78,7 +92,7 @@ def update_space():
     current_app.logger.info(spaces_info)
     IsAvailable = spaces_info['IsAvailble']
 
-    query = 'UPDATE Space SET IsAvailable = false WHERE SpaceId = %s'
+    query = 'UPDATE Spaces SET IsAvailable = false WHERE SpaceId = %s'
     data = (IsAvailable)
     cursor = db.get_db().cursor()
     r = cursor.execute(query, data)
@@ -91,8 +105,8 @@ def update_space():
 @spaces.route('/spaces/route5', methods=['GET'])
 def get_avail_spaces_conditions():
     cursor = db.get_db().cursor()
-    cursor.execute('select SpaceId, Space.isAvailable as Available \
-                    from customers WHERE IsAvailable = TRUE')
+    cursor.execute('select SpaceId, Spaces.isAvailable as Available \
+                    from Spaces WHERE IsAvailable = TRUE')
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()

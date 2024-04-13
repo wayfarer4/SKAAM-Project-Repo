@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS Cleaner (
 
 CREATE TABLE IF NOT EXISTS Incident (
     IncidentId int PRIMARY KEY,
-    Type VARCHAR(75),
+    IncidentType VARCHAR(75),
     IncidentTime DATETIME,
     IncidentName VARCHAR(100),
     CleanerId int,
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS SpaceCleaners (
 );
 
 -- Add sample data. 
-INSERT INTO Professor(StaffId,Email,FirstName,MiddleName,LastName) VALUES
+INSERT INTO Professor(StaffId, Email, FirstName, MiddleName, LastName) VALUES
  (8924663895,'lganing0@dell.com','Lida','Lynn','Ganing')
 ,(1563157152,'psaill1@dropbox.com','Rawley','Pascal','Saill')
 ,(7661382628,'mkelberer2@altervista.org','Harriott','Maggy','Kelberer')
@@ -787,7 +787,7 @@ INSERT INTO Booking(BookingId,SpaceId,NUId) VALUES
 ,(9674569669,0066064864,2633546315)
 ,(6132460977,2863578545,3019939291)
 ,(1280796642,2081181827,6703357471)
-,(1502142449,5979333177,0328897256)
+,(1502142449,5979333177,0328897256);
 
 INSERT INTO BookingDetails(BookingId,BookingNameEvent,BookingTime,CheckedIn,BookingLength) VALUES
  (3647097314,'Seminar on Entrepreneurship','2023-05-14 13:19:39','2024-01-30 22:16:25',146)
@@ -851,7 +851,7 @@ INSERT INTO BookingDetails(BookingId,BookingNameEvent,BookingTime,CheckedIn,Book
 ,(9674569669,'Tech Meetup','2024-01-03 11:47:14','2024-01-05 13:04:56',137)
 ,(9396376833,'Marketing Workshop','2023-11-02 15:43:09','2024-02-16 07:44:26',147);
 
-INSERT INTO Incident(IncidentId,Type,IncidentTime,IncidentName,CleanerId) VALUES
+INSERT INTO Incident(IncidentId,IncidentType,IncidentTime,IncidentName,CleanerId) VALUES
  (3768394409,'#bbb','2023-05-31','Lost Notebook',7084785787)
 ,(3649664054,'#3e3','2023-12-16','Broken Chair',8107696115)
 ,(4958206841,'#060','2023-09-15','Spilled Coffee',0913112801)
