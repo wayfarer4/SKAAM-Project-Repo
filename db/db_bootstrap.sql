@@ -293,66 +293,66 @@ INSERT INTO Student(NUId,FirstName,LastName,Email,MiddleName,isClubLead) VALUES
 ,(4312079587,'Lutero','Rome','drome1n@biglobe.ne.jp','Delcina','false');
 
 INSERT INTO BuildingManager(StaffId,LastName,Email,FirstName,MiddleName) VALUES
- ('6262446117','Mudle','mmudle0@japanpost.jp','Burr','Mahala')
-,('0961680881','Wink','jwink1@comcast.net','Locke','James')
-,('4048493523','Dannett','hdannett2@miibeian.gov.cn','Eugenio','Hogan')
-,('1770515801','Lippiello','slippiello3@bloglovin.com','Rosetta','Sallyann')
-,('0888522665','Beiderbecke','mbeiderbecke4@archive.org','Clemmie','Meagan')
-,('9528742769','Coughlin','fcoughlin5@narod.ru','Gabrila','Fransisco')
-,('9752415539','Bilsland','lbilsland6@aboutads.info','Yetty','Lelia')
-,('9602497203','Burren','tburren7@goodreads.com','Arabele','Tristam')
-,('4804001123','Shipsey','cshipsey8@deliciousdays.com','Gabi','Colene')
-,('2177364418','Mirfield','cmirfield9@latimes.com','Evaleen','Cindra')
-,('0032418175','Soldner','ssoldnera@facebook.com','Sigmund','Seamus')
-,('7220851766','Bunt','mbuntb@cloudflare.com','Neal','Maggee')
-,('4898769306','Shelly','gshellyc@wix.com','Robyn','Gasper')
-,('3872113135','Hallad','phalladd@pen.io','Murray','Patrica')
-,('3807594531','Byneth','gbynethe@1688.com','Ward','Gertie')
-,('0197977758','Whitticks','bwhitticksf@youtube.com','Cathyleen','Brandy')
-,('2681839386','Magovern','smagoverng@livejournal.com','Bryana','Sella')
-,('2582423823','Takle','etakleh@ebay.com','Heida','Everard')
-,('9161870218','Huckerby','mhuckerbyi@geocities.com','Jehanna','Maryrose')
-,('3426593955','Gerson','dgersonj@google.com.hk','Bobbe','Donal')
-,('2627293729','Knoles','gknolesk@hexun.com','Eduard','Gabby')
-,('9516906753','Simukov','msimukovl@microsoft.com','Fonz','Maureene')
-,('9964302681','Mazin','mmazinm@mozilla.com','Almira','Milicent')
-,('1235902013','Sherborne','rsherbornen@hostgator.com','Ema','Robby')
-,('1089236115','Lebourn','clebourno@craigslist.org','Reggy','Christie')
-,('8076214033','Couser','acouserp@unc.edu','Hermina','Ardeen')
-,('7164255652','Taffe','ktaffeq@yahoo.com','Dani','Kelvin')
-,('6399239702','Kennington','ckenningtonr@jiathis.com','Vicky','Casie')
-,('0468979301','Di Nisco','kdiniscos@123-reg.co.uk','Andria','Karen')
-,('7138992688','Guerrier','uguerriert@marketwatch.com','Wenda','Urbano')
-,('0108046982','Championnet','lchampionnetu@imgur.com','Darelle','Lambert')
-,('2869359691','Bachanski','jbachanskiv@1und1.de','Gill','Job')
-,('0453744362','Creavan','wcreavanw@csmonitor.com','Constantina','Windham')
-,('6301275896','Terram','bterramx@vk.com','Darell','Beatrix')
-,('9923973581','Tinham','ntinhamy@over-blog.com','Merry','Nickie')
-,('5840972223','Osburn','tosburnz@europa.eu','Arabel','Tim')
-,('6391857520','Brabin','mbrabin10@furl.net','Noe','Maire')
-,('3309626016','Catlette','lcatlette11@pinterest.com','Almeda','Lavinia')
-,('5423339715','Linn','alinn12@addthis.com','Etheline','Adelle')
-,('3960405278','Viccars','bviccars13@bigcartel.com','Ikey','Bettine')
-,('3987591250','Swanson','cswanson14@nsw.gov.au','Yolanthe','Cecile')
-,('9958486083','Dundendale','sdundendale15@gmpg.org','Ivette','Stinky')
-,('9334177217','Daber','cdaber16@discuz.net','Bibbye','Charisse')
-,('5144394752','Lowther','jlowther17@kickstarter.com','Fanechka','Jeno')
-,('7223137339','Schroter','sschroter18@tinyurl.com','Kym','Silvain')
-,('8056555307','Collar','hcollar19@auda.org.au','Glyn','Hastings')
-,('4501885939','Roach','rroach1a@redcross.org','Veriee','Robinetta')
-,('1009517651','Reilly','creilly1b@time.com','Tyler','Clifford')
-,('3666363032','Throssell','mthrossell1c@epa.gov','Hector','Magdalen')
-,('3905940469','Pressey','hpressey1d@squidoo.com','Jordan','Hobie')
-,('6753092536','Jeppe','wjeppe1e@imageshack.us','Jolie','Wayne')
-,('1297745159','Tichner','jtichner1f@loc.gov','Cam','Jecho')
-,('0742251268','Regglar','bregglar1g@vinaora.com','Maddy','Beth')
-,('9153584635','Dymock','adymock1h@archive.org','Goldi','Ara')
-,('9753683227','Leyfield','aleyfield1i@webeden.co.uk','Gretchen','Abra')
-,('4710478260','Brognot','jbrognot1j@flickr.com','Patricia','Jeddy')
-,('5586223791','Keijser','ckeijser1k@mozilla.org','Mervin','Cchaddie')
-,('7948607773','Cruz','dcruz1l@oracle.com','Inna','Derwin')
-,('4061148869','Harnott','charnott1m@ask.com','Garrett','Cathyleen')
-,('4098889943','Gonet','pgonet1n@networkadvertising.org','Kiel','Prudy');
+ (6262446117,'Mudle','mmudle0@japanpost.jp','Burr','Mahala')
+,(0961680881,'Wink','jwink1@comcast.net','Locke','James')
+,(4048493523,'Dannett','hdannett2@miibeian.gov.cn','Eugenio','Hogan')
+,(1770515801,'Lippiello','slippiello3@bloglovin.com','Rosetta','Sallyann')
+,(0888522665,'Beiderbecke','mbeiderbecke4@archive.org','Clemmie','Meagan')
+,(9528742769,'Coughlin','fcoughlin5@narod.ru','Gabrila','Fransisco')
+,(9752415539,'Bilsland','lbilsland6@aboutads.info','Yetty','Lelia')
+,(9602497203,'Burren','tburren7@goodreads.com','Arabele','Tristam')
+,(4804001123,'Shipsey','cshipsey8@deliciousdays.com','Gabi','Colene')
+,(2177364418,'Mirfield','cmirfield9@latimes.com','Evaleen','Cindra')
+,(0032418175,'Soldner','ssoldnera@facebook.com','Sigmund','Seamus')
+,(7220851766,'Bunt','mbuntb@cloudflare.com','Neal','Maggee')
+,(4898769306,'Shelly','gshellyc@wix.com','Robyn','Gasper')
+,(3872113135,'Hallad','phalladd@pen.io','Murray','Patrica')
+,(3807594531,'Byneth','gbynethe@1688.com','Ward','Gertie')
+,(0197977758,'Whitticks','bwhitticksf@youtube.com','Cathyleen','Brandy')
+,(2681839386,'Magovern','smagoverng@livejournal.com','Bryana','Sella')
+,(2582423823,'Takle','etakleh@ebay.com','Heida','Everard')
+,(9161870218,'Huckerby','mhuckerbyi@geocities.com','Jehanna','Maryrose')
+,(3426593955,'Gerson','dgersonj@google.com.hk','Bobbe','Donal')
+,(2627293729,'Knoles','gknolesk@hexun.com','Eduard','Gabby')
+,(9516906753,'Simukov','msimukovl@microsoft.com','Fonz','Maureene')
+,(9964302681,'Mazin','mmazinm@mozilla.com','Almira','Milicent')
+,(1235902013,'Sherborne','rsherbornen@hostgator.com','Ema','Robby')
+,(1089236115,'Lebourn','clebourno@craigslist.org','Reggy','Christie')
+,(8076214033,'Couser','acouserp@unc.edu','Hermina','Ardeen')
+,(7164255652,'Taffe','ktaffeq@yahoo.com','Dani','Kelvin')
+,(6399239702,'Kennington','ckenningtonr@jiathis.com','Vicky','Casie')
+,(0468979301,'Di Nisco','kdiniscos@123-reg.co.uk','Andria','Karen')
+,(7138992688,'Guerrier','uguerriert@marketwatch.com','Wenda','Urbano')
+,(0108046982,'Championnet','lchampionnetu@imgur.com','Darelle','Lambert')
+,(2869359691,'Bachanski','jbachanskiv@1und1.de','Gill','Job')
+,(0453744362,'Creavan','wcreavanw@csmonitor.com','Constantina','Windham')
+,(6301275896,'Terram','bterramx@vk.com','Darell','Beatrix')
+,(9923973581,'Tinham','ntinhamy@over-blog.com','Merry','Nickie')
+,(5840972223,'Osburn','tosburnz@europa.eu','Arabel','Tim')
+,(6391857520,'Brabin','mbrabin10@furl.net','Noe','Maire')
+,(3309626016,'Catlette','lcatlette11@pinterest.com','Almeda','Lavinia')
+,(5423339715,'Linn','alinn12@addthis.com','Etheline','Adelle')
+,(3960405278,'Viccars','bviccars13@bigcartel.com','Ikey','Bettine')
+,(3987591250,'Swanson','cswanson14@nsw.gov.au','Yolanthe','Cecile')
+,(9958486083,'Dundendale','sdundendale15@gmpg.org','Ivette','Stinky')
+,(9334177217,'Daber','cdaber16@discuz.net','Bibbye','Charisse')
+,(5144394752,'Lowther','jlowther17@kickstarter.com','Fanechka','Jeno')
+,(7223137339,'Schroter','sschroter18@tinyurl.com','Kym','Silvain')
+,(8056555307,'Collar','hcollar19@auda.org.au','Glyn','Hastings')
+,(4501885939,'Roach','rroach1a@redcross.org','Veriee','Robinetta')
+,(1009517651,'Reilly','creilly1b@time.com','Tyler','Clifford')
+,(3666363032,'Throssell','mthrossell1c@epa.gov','Hector','Magdalen')
+,(3905940469,'Pressey','hpressey1d@squidoo.com','Jordan','Hobie')
+,(6753092536,'Jeppe','wjeppe1e@imageshack.us','Jolie','Wayne')
+,(1297745159,'Tichner','jtichner1f@loc.gov','Cam','Jecho')
+,(0742251268,'Regglar','bregglar1g@vinaora.com','Maddy','Beth')
+,(9153584635,'Dymock','adymock1h@archive.org','Goldi','Ara')
+,(9753683227,'Leyfield','aleyfield1i@webeden.co.uk','Gretchen','Abra')
+,(4710478260,'Brognot','jbrognot1j@flickr.com','Patricia','Jeddy')
+,(5586223791,'Keijser','ckeijser1k@mozilla.org','Mervin','Cchaddie')
+,(7948607773,'Cruz','dcruz1l@oracle.com','Inna','Derwin')
+,(4061148869,'Harnott','charnott1m@ask.com','Garrett','Cathyleen')
+,(4098889943,'Gonet','pgonet1n@networkadvertising.org','Kiel','Prudy');
 
 INSERT INTO Class(CourseId,ClassName,StaffId) VALUES
  (44563,'Introduction to Biology','4920366299')
@@ -417,129 +417,128 @@ INSERT INTO Class(CourseId,ClassName,StaffId) VALUES
 ,(995,'Zoology','1563157152');
 
 INSERT INTO ITPerson(StaffId,PhoneNum) VALUES
- ('6404411547','202-399-5299')
-,('4847716124','789-963-3021')
-,('1958315710','977-223-0736')
-,('4993675240','788-281-8454')
-,('5454319546','937-951-0661')
-,('1733840613','822-764-4317')
-,('7159087461','935-547-3174')
-,('6820388063','626-490-0140')
-,('2216673692','420-648-1921')
-,('5741532802','209-816-6977')
-,('1962901823','823-998-0996')
-,('7872970554','778-289-0943')
-,('2420830105','945-156-0693')
-,('0741783649','817-221-4189')
-,('9778612722','170-940-7983')
-,('1278448195','826-305-9628')
-,('6294703387','818-304-4266')
-,('1018285954','339-831-4103')
-,('2261097638','452-511-2115')
-,('1629579416','652-340-6511')
-,('8591315766','921-119-2104')
-,('6382227242','342-660-5540')
-,('4650247519','797-118-9416')
-,('8038801261','509-494-0406')
-,('4565655470','692-978-8992')
-,('7325708300','670-604-2453')
-,('2711576175','179-191-9751')
-,('2966674741','776-386-3821')
-,('2050478399','917-284-6031')
-,('8139365408','704-250-9915')
-,('4949849018','134-852-3521')
-,('3613221624','323-983-5437')
-,('6989457686','780-131-9716')
-,('2448671044','866-882-7485')
-,('2982536897','573-434-7035')
-,('5227533121','665-708-3440')
-,('8451993907','388-636-3752')
-,('3923210922','982-822-1899')
-,('2976955085','883-446-0630')
-,('5171220123','486-269-6704')
-,('7018491207','170-608-8288')
-,('1152568337','638-808-1195')
-,('9728613725','610-931-3757')
-,('0613989589','665-505-1773')
-,('2136017020','765-334-6301')
-,('0341338400','691-699-9419')
-,('1518564402','533-776-6679')
-,('4240302234','469-641-1271')
-,('1587647540','690-880-2654')
-,('9256499452','967-842-1831')
-,('0073865168','598-783-3155')
-,('9435075606','645-404-9072')
-,('1180955676','217-587-3973')
-,('2069939979','218-148-3099')
-,('9783232592','588-440-8048')
-,('5030919155','573-365-1721')
-,('7728988107','306-854-3673')
-,('0832424730','402-524-8788')
-,('2761170458','485-931-9180')
-,('8756048041','714-822-1191');
+ (6404411547, '202-399-5299'),
+(4847716124, '789-963-3021'),
+(1958315710, '977-223-0736'),
+(4993675240, '788-281-8454'),
+(5454319546, '937-951-0661'),
+(1733840613, '822-764-4317'),
+(7159087461, '935-547-3174'),
+(6820388063, '626-490-0140'),
+(2216673692, '420-648-1921'),
+(5741532802, '209-816-6977'),
+(1962901823, '823-998-0996'),
+(7872970554, '778-289-0943'),
+(2420830105, '945-156-0693'),
+(741783649, '817-221-4189'),
+(9778612722, '170-940-7983'),
+(1278448195, '826-305-9628'),
+(6294703387, '818-304-4266'),
+(1018285954, '339-831-4103'),
+(2261097638, '452-511-2115'),
+(1629579416, '652-340-6511'),
+(8591315766, '921-119-2104'),
+(6382227242, '342-660-5540'),
+(4650247519, '797-118-9416'),
+(8038801261, '509-494-0406'),
+(4565655470, '692-978-8992'),
+(7325708300, '670-604-2453'),
+(2711576175, '179-191-9751'),
+(2966674741, '776-386-3821'),
+(2050478399, '917-284-6031'),
+(8139365408, '704-250-9915'),
+(4949849018, '134-852-3521'),
+(3613221624, '323-983-5437'),
+(6989457686, '780-131-9716'),
+(2448671044, '866-882-7485'),
+(2982536897, '573-434-7035'),
+(5227533121, '665-708-3440'),
+(8451993907, '388-636-3752'),
+(3923210922, '982-822-1899'),
+(2976955085, '883-446-0630'),
+(5171220123, '486-269-6704'),
+(7018491207, '170-608-8288'),
+(1152568337, '638-808-1195'),
+(9728613725, '610-931-3757'),
+(613989589, '665-505-1773'),
+(2136017020, '765-334-6301'),
+(341338400, '691-699-9419'),
+(1518564402, '533-776-6679'),
+(4240302234, '469-641-1271'),
+(1587647540, '690-880-2654'),
+(9256499452, '967-842-1831'),
+(73865168, '598-783-3155'),
+(9435075606, '645-404-9072'),
+(1180955676, '217-587-3973'),
+(2069939979, '218-148-3099'),
+(9783232592, '588-440-8048'),
+(5030919155, '573-365-1721'),
+(7728988107, '306-854-3673'),
+(832424730, '402-524-8788'),
+(2761170458, '485-931-9180'),
+(8756048041, '714-822-1191');
 
-
-INSERT INTO Building(BuildingId,IsActive,Floors,BuildingName,StaffId) VALUES
- ('01HV2J8M5045Y2Y5ESEQGDHADQ',false,4,'Smith Hall','6262446117')
-,('01HV2J8NAWQTZ3YSHZ3AS1RXP4',false,3,'Jones Building','0961680881')
-,('01HV2J8PHS7MEXP84FD3HN1BY3',false,5,'Williams Tower','4048493523')
-,('01HV2J8QQK9WBFDRM47EV86H14',true,10,'Johnson House','1770515801')
-,('01HV2J8RY9YBFGQS7RRKXJ8T1R',true,12,'Brown Residence','0888522665')
-,('01HV2J8T3RBQTM1BX5QC08N6MN',true,7,'Taylor Building','9528742769')
-,('01HV2J8VA74N6KVFYSZBV22A1T',true,5,'Miller Hall','9752415539')
-,('01HV2J8WGF9YYA9E72SAPQEAZ3',false,8,'Clark Tower','9602497203')
-,('01HV2J8XQ4XSZT91V4QA5546Y1',true,3,'Wilson House','4804001123')
-,('01HV2J8YWV4B4DNS5FAWZ1N78S',true,6,'Anderson Hall','2177364418')
-,('01HV2J9032QKKV580CFQBVZAKA',true,15,'Moore Building','0032418175')
-,('01HV2J919KARD5F34816GWJPX2',true,8,'Thomas Tower','7220851766')
-,('01HV2J92FTE1A8VA0457ZS17EQ',false,3,'Jackson Hall','4898769306')
-,('01HV2J93PBAZEYT2MZR1M9Q3RB',false,4,'Adams Residence','3872113135')
-,('01HV2J94VXNB3B8P3GMTVBVFQH',false,6,'Kennedy Building','3807594531')
-,('01HV2J962AJ85VD0RJE13KCSP7',false,20,'Nixon Tower','0197977758')
-,('01HV2J978N7BJW3ZZRFD0W18JJ',false,9,'Monroe Hall','2681839386')
-,('01HV2J98EWZJTM282F5P0HK162',true,4,'Roosevelt House','2582423823')
-,('01HV2J99P5FBVRDXRKV0EK0PHK',false,5,'Washington Residence','9161870218')
-,('01HV2J9AV2XMBFP1FP85HY3R1D',false,8,'Jefferson Tower','3426593955')
-,('01HV2J9C28ZHH6GN5G9C0KAVVF',true,4,'Lincoln Hall','2627293729')
-,('01HV2J9D8C1A9WP7JZ8YVYJXBJ',true,7,'Kennedy House','9516906753')
-,('01HV2J9EDTJQZ10F0X8NK1N77T',false,9,'Eisenhower Building','9964302681')
-,('01HV2J9FMPA6FWDNQMTHADAX35',false,6,'Truman Tower','1235902013')
-,('01HV2J9GV3AYD4CAQ1XRFKTC6D',true,22,'Clinton Hall','1089236115')
-,('01HV2J9J0Y9E8VRA4DC8P3W00T',true,4,'Jackson Residence','8076214033')
-,('01HV2J9K7V4KEB48BY5DY2CBS1',false,10,'Franklin Building','7164255652')
-,('01HV2J9MDAYWSXF3BPGRJ45EHJ',true,9,'Madison Tower','6399239702')
-,('01HV2J9NKQD74QE11FYJ108WRP',false,3,'Wilson Hall','0468979301')
-,('01HV2J9PSRCKZ5H7ESEAHEE06C',false,7,'Monroe Tower','7138992688')
-,('01HV2J9R06G6PKMDF3Z9VNRBXY',false,3,'Adams Building','0108046982')
-,('01HV2J9S1E6PEDEQWBKS6QDPP7',true,3,'Jefferson Hall','2869359691')
-,('01HV2J9SR2ZEERGE8R8CFND8TT',true,4,'Lincoln Tower','0453744362')
-,('01HV2J9TEQ0S08G53X875SMD7B',false,9,'Roosevelt Building','6301275896')
-,('01HV2J9V5ECRTKDDGEZDANH5RS',true,18,'Truman House','9923973581')
-,('01HV2J9VW1DXSW49ZR7ANHP72M',false,5,'Kennedy Residence','5840972223')
-,('01HV2J9WJK9C63BVHHNHSMJE7Y',true,6,'Lincoln Tower','6391857520')
-,('01HV2J9X95DWW4SES79PT04H53',false,7,'Kennedy Tower','3309626016')
-,('01HV2J9XZQQBYM33B7DRJS2N9W',false,4,'Lincoln Building','5423339715')
-,('01HV2J9YPEFSAVFA2G31GVST6K',false,6,'Kennedy Hall','3960405278')
-,('01HV2J9ZD2MVF8H0YNTEF7K4R9',true,5,'Madison House','3987591250')
-,('01HV2JA03QTWKX6YJRBJ6D62GZ',false,3,'Adams Hall','9958486083')
-,('01HV2JA0TBN4GC3N15YZX3GGBS',false,4,'Jefferson Tower','9334177217')
-,('01HV2JA1H2880DXPSSWW69TEP8',true,6,'Lincoln House','5144394752')
-,('01HV2JA27Q6S8360ZYR8X1QY5K',true,8,'Kennedy Tower','7223137339')
-,('01HV2JA2YB02E0WA0VK3XMSK8Z',false,10,'Roosevelt Building','8056555307')
-,('01HV2JA3N0XB0FE07E8FGHFV7E',true,5,'Madison House','4501885939')
-,('01HV2JA4BJTSZYQG79V0DJAQGA',true,12,'Kennedy Residence','1009517651')
-,('01HV2JA526RVXD5AXV605B1035',true,22,'Lincoln Tower','3666363032')
-,('01HV2JA5RWR16DWTKBDAW3K314',false,7,'Jefferson Tower','3905940469')
-,('01HV2JA6FET3FK688BD6D8985G',false,9,'Madison Building','6753092536')
-,('01HV2JA7636T7HWPQHYDK2H2VH',true,3,'Adams Hall','1297745159')
-,('01HV2JA7WSYP1HT14X84KA4XYN',true,4,'Jefferson Tower','0742251268')
-,('01HV2JA8K97CXVBQ25R4GAPHHS',false,6,'Lincoln Tower','9153584635')
-,('01HV2JA99YBF0EQRJKRZT0D0CW',true,7,'Madison Building','9753683227')
-,('01HV2JAA0GNS5EYVB50E9RK1PA',false,4,'Jefferson Residence','4710478260')
-,('01HV2JAAQ296B9W3DZGARA0MTZ',false,5,'Washington Tower','5586223791')
-,('01HV2JABDPDAHQCSNEWFF0HNQM',true,7,'Lincoln Residence','7948607773')
-,('01HV2JAC4BETXZMJ267HYC69ZH',false,8,'Madison Hall','4061148869')
-,('01HV2JACTWKB5Z6JACV27F9VZP',false,9,'Adams House','4098889943');
+INSERT INTO Cleaner(CleanerId, FirstName, LastName, Email, MiddleName, Phone) VALUES
+ (3163574742, 'Linc', 'Bettles', 'lbettles0@netvibes.com', 'Intéressant', 1279965956),
+ (2370847700, 'Gerhard', 'Probey', 'gprobey1@g.co', 'Estée', 4519270668),
+ (6331731407, 'Jemima', 'Gavan', 'jgavan2@cocolog-nifty.com', 'Aí', 7064182714),
+ (2310291293, 'Erskine', 'Krzyzaniak', 'ekrzyzaniak3@domainmarket.com', 'Gaëlle', 2498204368),
+ (156877708, 'Faye', 'Franca', 'ffranca4@yandex.ru', 'Judicaël', 4463600289),
+ (8997798626, 'Donielle', 'Saltrese', 'dsaltrese5@who.int', 'Naëlle', 3523960535),
+ (5018295538, 'Lula', 'Doldon', 'ldoldon6@ucoz.ru', 'Åslög', 2555062510),
+ (777551322, 'Garrot', 'Senter', 'gsenter7@meetup.com', 'Eléa', 5474420406),
+ (3756300196, 'Kilian', 'Edmonstone', 'kedmonstone8@discuz.net', 'Personnalisée', 3481969607),
+ (3640715292, 'Scotty', 'Scoon', 'sscoon9@shareasale.com', 'Annotés', 2042953303),
+ (8638527, 'Kacy', 'Stirland', 'kstirlanda@netlog.com', 'Clémentine', 2027418421),
+ (4721164262, 'Jo', 'Stratley', 'jstratleyb@odnoklassniki.ru', 'Miléna', 1133635800),
+ (3976546682, 'Cassaundra', 'Nise', 'cnisec@npr.org', 'Rachèle', 4127181009),
+ (5489266961, 'Stearne', 'Hucker', 'shuckerd@clickbank.net', 'Marie-noël', 2678037976),
+ (9947865649, 'Colleen', 'Randle', 'crandlee@liveinternet.ru', 'Marie-noël', 8117433546),
+ (355568411, 'Gill', 'Cursons', 'gcursonsf@newyorker.com', 'Gaétane', 2278851432),
+ (2223827004, 'Luciano', 'Siene', 'lsieneg@nbcnews.com', 'Maïlys', 9899550821),
+ (106886290, 'Elisa', 'Reaveley', 'ereaveleyh@hud.gov', 'Réservés', 6805875416),
+ (6775793316, 'Lorianna', 'Luckey', 'lluckeyi@eepurl.com', 'Noëlla', 2865139849),
+ (7944751683, 'Katherina', 'Burkert', 'kburkertj@1688.com', 'Annotée', 6598345476),
+ (9010592871, 'Mellisent', 'Base', 'mbasek@sina.com.cn', 'Célestine', 8328971928),
+ (9950648742, 'Willie', 'Jonuzi', 'wjonuzil@naver.com', 'Thérèse', 7183697109),
+ (1398891878, 'Tera', 'Bartolomeazzi', 'tbartolomeazzim@businessinsider.com', 'Börje', 9753361567),
+ (2221804686, 'Merrili', 'D''Arrigo', 'mdarrigon@furl.net', 'Léana', 8691740200),
+ (8656351052, 'Tobiah', 'Farnell', 'tfarnello@reddit.com', 'Laurène', 3202960471),
+ (1841297267, 'Markus', 'Massen', 'mmassenp@umich.edu', 'Ráo', 6238739842),
+ (6612129980, 'Jacquenetta', 'Baudet', 'jbaudetq@edublogs.org', 'Táng', 4924916389),
+ (381835588, 'Felicdad', 'Pierro', 'fpierror@sfgate.com', 'Néhémie', 6663191077),
+ (8445685139, 'Aldo', 'Brooking', 'abrookings@paypal.com', 'Cloé', 6088504651),
+ (5692918781, 'Wilhelm', 'Rosenkrantz', 'wrosenkrantzt@miitbeian.gov.cn', 'Laïla', 6834917376),
+ (6836057703, 'Roderich', 'Ivakin', 'rivakinu@telegraph.co.uk', 'Lyséa', 9319698542),
+ (2382421290, 'Ara', 'Goodinson', 'agoodinsonv@comsenz.com', 'Yè', 9296955957),
+ (2562248406, 'Jenelle', 'Huc', 'jhucw@chron.com', 'Clémence', 8927720111),
+ (6583152584, 'Nels', 'Bleckly', 'nblecklyx@jiathis.com', 'Félicie', 2299290155),
+ (8192926001, 'Elset', 'Fancott', 'efancotty@aboutads.info', 'Kévina', 1357653339),
+ (9230771112, 'Melitta', 'Luke', 'mlukez@cafepress.com', 'Annotée', 4092793865),
+ (4153850594, 'Vevay', 'Menichino', 'vmenichino10@de.vu', 'Athéna', 9925227965),
+ (2047139864, 'Benedikta', 'Armsden', 'barmsden11@census.gov', 'Wá', 4013487075),
+ (1654084786, 'Sada', 'Hessel', 'shessel12@spiegel.de', 'Chloé', 6696417811),
+ (1165609312, 'Liane', 'Cantrill', 'lcantrill13@about.com', 'Léone', 4174229048),
+ (1090948905, 'Estella', 'Elam', 'eelam14@shareasale.com', 'Vénus', 5241111506),
+ (4791983424, 'Marci', 'Ollive', 'mollive15@simplemachines.org', 'Loïca', 5228265665),
+ (8064788285, 'Sib', 'Drane', 'sdrane16@fotki.com', 'Faîtes', 9024942520),
+ (807121266, 'Marieann', 'Coxhead', 'mcoxhead17@economist.com', 'Kallisté', 2281887085),
+ (1838423389, 'Shelton', 'Hamsley', 'shamsley18@comsenz.com', 'Irène', 5329225776),
+ (5444322587, 'Ardene', 'Sutcliffe', 'asutcliffe19@freewebs.com', 'Loïca', 1077891719),
+ (1617789062, 'Kaylee', 'Hurring', 'khurring1a@go.com', 'Françoise', 3424600616),
+ (162319037, 'Shannon', 'Corran', 'scorran1b@smh.com.au', 'Geneviève', 1622240735),
+ (298639599, 'Samuele', 'Bergstrand', 'sbergstrand1c@technorati.com', 'Cléopatre', 3053241326),
+ (4073757288, 'Ruprecht', 'Pretley', 'rpretley1d@shutterfly.com', 'Garçon', 4185553349),
+ (203012917, 'Claiborne', 'Zylbermann', 'czylbermann1e@kickstarter.com', 'Solène', 7428182015),
+ (4016915082, 'Jeanelle', 'Goulter', 'jgoulter1f@irs.gov', 'Maëly', 8276059998),
+ (4859645316, 'Farica', 'Nuss', 'fnuss1g@hibu.com', 'Liè', 7833131797),
+ (2423120729, 'Gerda', 'Sollner', 'gsollner1h@barnesandnoble.com', 'Desirée', 1197194313),
+ (21814201, 'Adara', 'Ruggen', 'aruggen1i@timesonline.co.uk', 'Maéna', 6215435921),
+ (3855317984, 'Amby', 'Gwin', 'agwin1j@squarespace.com', 'Mélissandre', 8272846710),
+ (2022841034, 'Hort', 'Harrill', 'hharrill1k@google.it', 'Maëlys', 5783542994),
+ (6936470408, 'Mickie', 'Bizley', 'mbizley1l@facebook.com', 'Loïca', 9666791674),
+ (5692688662, 'Mallorie', 'Suff', 'msuff1m@squidoo.com', 'Mélodie', 1893997382),
+ (2227752904, 'Kaycee', 'Bamblett', 'kbamblett1n@psu.edu', 'Laïla', 9758124784);
 
 INSERT INTO Cleaner(CleanerId,FirstName,LastName,Email,MiddleName,Phone) VALUES
  (3163574742,'Linc','Bettles','lbettles0@netvibes.com','Intéressant','127-996-5956')
