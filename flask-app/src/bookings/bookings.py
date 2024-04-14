@@ -10,7 +10,7 @@ bookings = Blueprint('bookings', __name__)
 #WHERE BookingId = 4; -- Check in; 1.3
 
 # Add a PUT /Booking route that will update the booking details information
-@bookings.route('/bookings/route1', methods=['PUT'])
+@bookings.route('/bookings/checkin', methods=['PUT'])
 def update_checkIn():
     booking_detail_info = request.json
     current_app.logger.info(booking_detail_info)
@@ -30,7 +30,7 @@ def update_checkIn():
 #WHERE BookingId = 4; -- Change Booking Name; 1.4
 
 # Add a PUT /Booking route that will update the booking details information
-@bookings.route('/bookings/route2', methods=['PUT'])
+@bookings.route('/bookings/updatename', methods=['PUT'])
 def update_booking_name():
     booking_detail_info = request.json
     current_app.logger.info(booking_detail_info)
@@ -49,7 +49,7 @@ def update_booking_name():
 #WHERE BookingId = 4; -- Extend the booking; 1.5
 
 # Add a PUT /Booking route that will update the booking details information
-@bookings.route('/bookings/route3', methods=['PUT'])
+@bookings.route('/bookings/updatelength', methods=['PUT'])
 def update_booking_length():
     booking_detail_info = request.json
     current_app.logger.info(booking_detail_info)
@@ -66,7 +66,7 @@ def update_booking_length():
 ### ROUTE 4 FOR BOOKING
 # DELETE FROM BookingDetails
 # WHERE BookingId = 1; -- Cancel booking; 1.6
-@bookings.route('/bookings/route4', methods=['DELETE'])
+@bookings.route('/bookings/cancel', methods=['DELETE'])
 def cancel_booking():
     
     # collecting data from the request object 

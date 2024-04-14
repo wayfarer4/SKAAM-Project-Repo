@@ -9,8 +9,7 @@ people = Blueprint('people', __name__)
 #SET isAvailable = false
 #WHERE SpaceId = 4; -- Book a space; 1.1 Part 1
 
-# Add a PUT /Booking route that will update the booking details information
-@people.route('/people/route1', methods=['PUT'])
+@people.route('/people/updatetime', methods=['PUT'])
 def updateSpace():
     space_info = request.json
     current_app.logger.info(space_info)
@@ -26,7 +25,7 @@ def updateSpace():
 
 #INSERT INTO Booking(BookingId, SpaceId, NUId)
 #VALUES (4, 4, 1001); -- Book a space; 1.1 Part 2
-@people.route('/people/route2', methods=['POST'])
+@people.route('/people/book', methods=['POST'])
 def book_space():
     # collecting data from the request object 
     the_data = request.json
@@ -56,7 +55,7 @@ def book_space():
 
 #INSERT INTO BookingDetails(BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength)
 #VALUES (4, 'Study', '2024-04-03 4:00:00', NULL, '01:00:00'); -- Book a space; 1.1 Part 3
-@people.route('/people/route3', methods=['POST'])
+@people.route('/people/bookingdetails', methods=['POST'])
 def book_space_details():
     # collecting data from the request object 
     the_data = request.json
@@ -93,7 +92,7 @@ def book_space_details():
 #JOIN Booking B on S.SpaceId = B.SpaceId
 #JOIN BookingDetails BD on B.BookingId = BD.BookingId
 #WHERE p.StaffId = 1; -- View professor's own booking details; 2.1
-@people.route('/people/route4', methods=['GET'])
+@people.route('/people/viewbooking', methods=['GET'])
 def prof_view_booking_details():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT BookingNameEvent, CheckedIn, BookingTime FROM Professor p JOIN Class c ON' 
@@ -120,7 +119,7 @@ def prof_view_booking_details():
 #JOIN Building b ON S.BuildingID = b.BuildingID
 #JOIN BuildingManager m ON b.StaffID = m.StaffID
 #WHERE p.StaffId = 1; -- Call Building Manager; 2.2
-@people.route('/people/route5', methods=['GET'])
+@people.route('/people/callbuildingmanager', methods=['GET'])
 def prof_view_building_manager(profId):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT Email FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
@@ -144,7 +143,7 @@ def prof_view_building_manager(profId):
 #JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId
 #JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID
 #WHERE p.StaffId = 1; -- Report an incident; 2.3
-@people.route('/people/route6', methods=['GET'])
+@people.route('/people/reportincident', methods=['GET'])
 def prof_view_cleaner(profId):
     cursor = db.get_db().cursor()
     cursor.execute('SELECT Phone FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
@@ -167,7 +166,7 @@ def prof_view_cleaner(profId):
 #JOIN Classroom C2 ON c.CourseId = C2.CourseId
 #JOIN ITPerson i ON C2.StaffId
 #WHERE p.StaffId  = 1; -- Call IT; 2.4
-@people.route('/people/route7', methods=['GET'])
+@people.route('/people/callIT', methods=['GET'])
 def prof_view_assigned_it():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT PhoneNum FROM Professor p JOIN Class c ON p.StaffId = c.StaffId' 
