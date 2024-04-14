@@ -55,11 +55,11 @@ CREATE TABLE IF NOT EXISTS BuildingManager (
 );
 
 CREATE TABLE IF NOT EXISTS Building (
-    BuildingId BIGINT PRIMARY KEY,
+    BuildingId VARCHAR(20) PRIMARY KEY,
     isActive BOOLEAN DEFAULT true,
     Floors int,
     BuildingName VARCHAR(50),
-    StaffId int,
+    StaffId BIGINT,
     CONSTRAINT fk06
         FOREIGN KEY (StaffId) REFERENCES BuildingManager (StaffId)
         ON UPDATE cascade ON DELETE restrict
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Building (
 CREATE TABLE IF NOT EXISTS Spaces
 (
     SpaceId   BIGINT PRIMARY KEY,
-    BuildingId  BIGINT,
+    BuildingId  VARCHAR(20),
     IsInAcademicBuilding BOOLEAN DEFAULT true,
     IsAvailable BOOLEAN DEFAULT true,
     CONSTRAINT fk2
