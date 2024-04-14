@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Professor
 
 CREATE TABLE IF NOT EXISTS Class
 (
-    CourseId   int PRIMARY KEY,
+    CourseId   BIGINT PRIMARY KEY,
     ClassName  VARCHAR(50),
     StaffId    VARCHAR(15),
     CONSTRAINT fk01
@@ -41,13 +41,13 @@ CREATE TABLE IF NOT EXISTS Class
 
 CREATE TABLE IF NOT EXISTS ITPerson
 (
-    StaffId   int PRIMARY KEY,
+    StaffId   BIGINT PRIMARY KEY,
     PhoneNum  VARCHAR(15),
     UNIQUE INDEX uq_idx_phone_num(PhoneNum)
 );
 
 CREATE TABLE IF NOT EXISTS BuildingManager (
-    StaffId int PRIMARY KEY,
+    StaffId BIGINT PRIMARY KEY,
     Email VARCHAR(75),
     FirstName  VARCHAR(50)     NOT NULL,
     MiddleName VARCHAR(50),
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS BuildingManager (
 );
 
 CREATE TABLE IF NOT EXISTS Building (
-    BuildingId int PRIMARY KEY,
+    BuildingId BIGINT PRIMARY KEY,
     isActive BOOLEAN DEFAULT true,
     Floors int,
     BuildingName VARCHAR(50),
@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS Building (
 
 CREATE TABLE IF NOT EXISTS Spaces
 (
-    SpaceId   int PRIMARY KEY,
-    BuildingId  int,
+    SpaceId   BIGINT PRIMARY KEY,
+    BuildingId  BIGINT,
     IsInAcademicBuilding BOOLEAN DEFAULT true,
     IsAvailable BOOLEAN DEFAULT true,
     CONSTRAINT fk2
@@ -80,10 +80,10 @@ CREATE TABLE IF NOT EXISTS Spaces
 
 
 CREATE TABLE IF NOT EXISTS Classroom (
-    ClassroomId int PRIMARY KEY,
-    CourseId int,
-    StaffId int,
-    SpaceId int,
+    ClassroomId BIGINT PRIMARY KEY,
+    CourseId BIGINT,
+    StaffId BIGINT,
+    SpaceId BIGINT,
     CONSTRAINT fk03
         FOREIGN KEY (CourseId) REFERENCES Class (CourseId)
         ON UPDATE cascade,
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Classroom (
 
 
 CREATE TABLE IF NOT EXISTS Cleaner (
-    CleanerId int PRIMARY KEY,
+    CleanerId BIGINT PRIMARY KEY,
     Email VARCHAR(75),
     FirstName  VARCHAR(50)     NOT NULL,
     MiddleName VARCHAR(50),
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS Cleaner (
 
 
 CREATE TABLE IF NOT EXISTS Incident (
-    IncidentId int PRIMARY KEY,
+    IncidentId BIGINT PRIMARY KEY,
     IncidentType VARCHAR(75),
     IncidentTime DATETIME,
     IncidentName VARCHAR(100),
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS Student (
 
 
 CREATE TABLE IF NOT EXISTS Booking (
-    BookingId int PRIMARY KEY,
+    BookingId BIGINT PRIMARY KEY,
     SpaceId int,
     NUId BIGINT,
     CONSTRAINT fk08
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS Booking (
 
 
 CREATE TABLE IF NOT EXISTS BookingDetails (
-    BookingId int,
+    BookingId BIGINT,
     BookingNameEvent VARCHAR(75),
     PRIMARY KEY (BookingId, BookingNameEvent),
     BookingTime DATETIME NOT NULL,
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS BookingDetails (
 
 
 CREATE TABLE IF NOT EXISTS SpaceCleaners (
-    SpaceId int,
+    SpaceId BIGINT,
     CleanerId int,
     PRIMARY KEY (SpaceId, CleanerId),
     CONSTRAINT fk11
