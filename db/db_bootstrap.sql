@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS Class
 (
     CourseId   int PRIMARY KEY,
     ClassName  VARCHAR(50),
-    StaffId    int,
+    StaffId    VARCHAR(15),
     CONSTRAINT fk01
         FOREIGN KEY (StaffId) REFERENCES Professor (StaffId)
             ON UPDATE cascade ON DELETE restrict
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS Incident (
 
 
 CREATE TABLE IF NOT EXISTS Student (
-    NUId int PRIMARY KEY,
+    NUId BIGINT PRIMARY KEY,
     Email VARCHAR(75),
     FirstName  VARCHAR(50)     NOT NULL,
     MiddleName VARCHAR(50),
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS Student (
 CREATE TABLE IF NOT EXISTS Booking (
     BookingId int PRIMARY KEY,
     SpaceId int,
-    NUId int,
+    NUId BIGINT,
     CONSTRAINT fk08
         FOREIGN KEY (NUId) REFERENCES Student (NUId)
         ON UPDATE cascade ON DELETE restrict,
@@ -355,66 +355,66 @@ INSERT INTO BuildingManager(StaffId,LastName,Email,FirstName,MiddleName) VALUES
 ,('4098889943','Gonet','pgonet1n@networkadvertising.org','Kiel','Prudy');
 
 INSERT INTO Class(CourseId,ClassName,StaffId) VALUES
- (44563,'Introduction to Biology',4920366299)
-,(0,'English Literature',6934997948)
-,(37,'Introduction to Computer Science',1171095333)
-,(46,'History of Art',2958467899)
-,(4,'Algebra I',9719654333)
-,(60,'Introduction to Psychology',2409516211)
-,(6680,'Home Economics',9547757555)
-,(6768,'Physical Education',4106164833)
-,(385,'Chemistry Lab',2958467899)
-,(155,'Advanced Calculus',9966170154)
-,(6,'Introduction to Physics',0301903182)
-,(334,'Statistics',8375959987)
-,(15212,'Digital Marketing',1563157152)
-,(611,'Introduction to Sociology',6934213106)
-,(3498,'Creative Writing',7351586225)
-,(75,'Geography',3606008813)
-,(2617,'Introduction to Business Management',3933230837)
-,(712,'Introduction to Anthropology',9547757555)
-,(30101,'Financial Accounting',3261115165)
-,(5953,'Introduction to Environmental Science',6934997948)
-,(87141,'Introduction to Programming',1710477628)
-,(48,'Spanish Language',7283517324)
-,(145,'Film Studies',2958467899)
-,(108,'Political Science',1563157152)
-,(212,'Microeconomics',9719654333)
-,(6333,'Introduction to Engineering',2552388485)
-,(841,'Introduction to Ethics',9966170154)
-,(8,'World History',8399545686)
-,(8826,'Data Structures and Algorithms',9236017045)
-,(516,'Culinary Arts',2866035003)
-,(525,'Introduction to Marketing',1710477628)
-,(8889,'Nutrition and Dietetics',7661382628)
-,(033,'Cybersecurity',3933230837)
-,(37445,'Introduction to Public Speaking',5903776388)
-,(0342,'Web Development',9966170154)
-,(395,'Cognitive Psychology',2360489623)
-,(3,'Introduction to Economics',5527432916)
-,(66,'Introduction to Sociology',8484028275)
-,(12,'Music Theory',2409516211)
-,(37,'Art History',7288235270)
-,(76,'Organizational Behavior',0288563638)
-,(680,'Digital Photography',6497399429)
-,(28,'Environmental Studies',2958467899)
-,(70,'Introduction to Philosophy',8399545686)
-,(34796,'Research Methods',2851158546)
-,(82382,'Human Anatomy',6385237427)
-,(7,'Creative Arts',1823222676)
-,(297,'Entrepreneurship',2866035003)
-,(9299,'Introduction to Linguistics',1190007312)
-,(702,'Tax Accounting',3696696862)
-,(8591,'Managerial Accounting',3606008813)
-,(2682,'Marketing Management',7801123107)
-,(38,'Computer Networks',7351586225)
-,(04,'Introduction to Astronomy',2722352044)
-,(2,'Introduction to Education',3117582983)
-,(251,'Travel and Tourism',4285145626)
-,(59964,'Introduction to Graphic Design',4920366299)
-,(129,'Computer Graphics',9719654333)
-,(9043,'Medical Terminology',9236017045)
-,(995,'Zoology',1563157152);
+ (44563,'Introduction to Biology','4920366299')
+,(0,'English Literature','6934997948')
+,(37,'Introduction to Computer Science','1171095333')
+,(46,'History of Art','2958467899')
+,(4,'Algebra I','9719654333')
+,(60,'Introduction to Psychology','2409516211')
+,(6680,'Home Economics','9547757555')
+,(6768,'Physical Education','4106164833')
+,(385,'Chemistry Lab','2958467899')
+,(155,'Advanced Calculus','9966170154')
+,(6,'Introduction to Physics','0301903182')
+,(334,'Statistics','8375959987')
+,(15212,'Digital Marketing','1563157152')
+,(611,'Introduction to Sociology','6934213106')
+,(3498,'Creative Writing','7351586225')
+,(75,'Geography','3606008813')
+,(2617,'Introduction to Business Management','3933230837')
+,(712,'Introduction to Anthropology','9547757555')
+,(30101,'Financial Accounting','3261115165')
+,(5953,'Introduction to Environmental Science','6934997948')
+,(87141,'Introduction to Programming','1710477628')
+,(48,'Spanish Language','7283517324')
+,(145,'Film Studies','2958467899')
+,(108,'Political Science','1563157152')
+,(212,'Microeconomics','9719654333')
+,(6333,'Introduction to Engineering','2552388485')
+,(841,'Introduction to Ethics','9966170154')
+,(8,'World History','8399545686')
+,(8826,'Data Structures and Algorithms','9236017045')
+,(516,'Culinary Arts','2866035003')
+,(525,'Introduction to Marketing','1710477628')
+,(8889,'Nutrition and Dietetics','7661382628')
+,(033,'Cybersecurity','3933230837')
+,(37445,'Introduction to Public Speaking','5903776388')
+,(0342,'Web Development','9966170154')
+,(395,'Cognitive Psychology','2360489623')
+,(3,'Introduction to Economics','5527432916')
+,(66,'Introduction to Sociology','8484028275')
+,(12,'Music Theory','2409516211')
+,(37,'Art History','7288235270')
+,(76,'Organizational Behavior','0288563638')
+,(680,'Digital Photography','6497399429')
+,(28,'Environmental Studies','2958467899')
+,(70,'Introduction to Philosophy','8399545686')
+,(34796,'Research Methods','2851158546')
+,(82382,'Human Anatomy','6385237427')
+,(7,'Creative Arts','1823222676')
+,(297,'Entrepreneurship','2866035003')
+,(9299,'Introduction to Linguistics','1190007312')
+,(702,'Tax Accounting','3696696862')
+,(8591,'Managerial Accounting','3606008813')
+,(2682,'Marketing Management','7801123107')
+,(38,'Computer Networks','7351586225')
+,(04,'Introduction to Astronomy','2722352044')
+,(2,'Introduction to Education','3117582983')
+,(251,'Travel and Tourism','4285145626')
+,(59964,'Introduction to Graphic Design','4920366299')
+,(129,'Computer Graphics','9719654333')
+,(9043,'Medical Terminology','9236017045')
+,(995,'Zoology','1563157152');
 
 INSERT INTO ITPerson(StaffId,PhoneNum) VALUES
  ('6404411547','202-399-5299')
