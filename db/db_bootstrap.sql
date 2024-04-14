@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS BuildingManager (
 );
 
 CREATE TABLE IF NOT EXISTS Building (
-    BuildingId VARCHAR(20) PRIMARY KEY,
+    BuildingId  VARCHAR(40) PRIMARY KEY,
     isActive BOOLEAN DEFAULT true,
     Floors int,
     BuildingName VARCHAR(50),
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Building (
 CREATE TABLE IF NOT EXISTS Spaces
 (
     SpaceId   BIGINT PRIMARY KEY,
-    BuildingId  VARCHAR(20),
+    BuildingId  VARCHAR(40),
     IsInAcademicBuilding BOOLEAN DEFAULT true,
     IsAvailable BOOLEAN DEFAULT true,
     CONSTRAINT fk2
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS BookingDetails (
     PRIMARY KEY (BookingId, BookingNameEvent),
     BookingTime DATETIME NOT NULL,
     CheckedIn DATETIME,  
-    BookingLength TIME NOT NULL, 
+    BookingLength int NOT NULL, 
     CONSTRAINT fk10
         FOREIGN KEY (BookingId) REFERENCES Booking (BookingId)
         ON UPDATE cascade ON DELETE cascade 
