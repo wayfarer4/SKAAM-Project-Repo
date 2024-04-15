@@ -14,12 +14,12 @@ bookings = Blueprint('bookings', __name__)
 def update_checkIn():
     booking_detail_info = request.json
     current_app.logger.info(booking_detail_info)
-    CheckedIn = booking_detail_info['CheckedIn']
+    bookingId = booking_detail_info['BookingId']
 
-    query = 'UPDATE BookingDetails SET CheckedIn = %s where id = %s'
-    data = (CheckedIn)
+    query = 'UPDATE BookingDetails SET CheckedIn = CURRENT_TIMESTAMP where id ='
+    query += str(bookingId)
     cursor = db.get_db().cursor()
-    r = cursor.execute(query, data)
+    r = cursor.execute(query)
     db.get_db().commit()
     return 'check in time updated!'
 

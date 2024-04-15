@@ -90,12 +90,13 @@ def delete_space():
 def update_space():
     spaces_info = request.json
     current_app.logger.info(spaces_info)
-    IsAvailable = spaces_info['IsAvailble']
+    spaceId = spaces_info['SpaceId']
 
-    query = 'UPDATE Spaces SET IsAvailable = false WHERE SpaceId = %s'
-    data = (IsAvailable)
+    query = 'UPDATE Spaces SET IsAvailable = false WHERE SpaceId ='
+    query += str(spaceId)
+    current_app.logger.info(query)
     cursor = db.get_db().cursor()
-    r = cursor.execute(query, data)
+    r = cursor.execute(query)
     db.get_db().commit()
     return 'room offline'
 
