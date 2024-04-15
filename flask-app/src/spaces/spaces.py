@@ -7,7 +7,7 @@ spaces = Blueprint('spaces', __name__)
 
 #SELECT *
 #FROM Space WHERE IsAvailable = true; -- Viewing availability; 1.2
-@spaces.route('/spaces/route1', methods=['GET'])
+@spaces.route('/spaces/viewavailability', methods=['GET'])
 def get_avail_spaces():
     cursor = db.get_db().cursor()
     cursor.execute('select * \
@@ -40,7 +40,7 @@ def get_avail_spaces_tst():
 
 #INSERT INTO Space (SpaceId, BuildingId)
 #   VALUES (4, 2); -- Adding space; 3.1
-@spaces.route('/spaces/route2', methods=['POST'])
+@spaces.route('/spaces/addspace', methods=['POST'])
 def add_space():
     the_data = request.json
     current_app.logger.info(the_data)
@@ -64,7 +64,7 @@ def add_space():
 
 #DELETE FROM Space
 #   WHERE SpaceId = 4; -- Removing a space; 3.2
-@spaces.route('/spaces/route3', methods=['DELETE'])
+@spaces.route('/spaces/removespace', methods=['DELETE'])
 def delete_space():
     
     # collecting data from the request object 
@@ -86,7 +86,7 @@ def delete_space():
 #UPDATE Space
 #SET isAvailable = false
 #WHERE SpaceId = 3; -- Update a room to be offline; 3.3
-@spaces.route('/sapces/route4', methods=['PUT'])
+@spaces.route('/sapces/offlineroom', methods=['PUT'])
 def update_space():
     spaces_info = request.json
     current_app.logger.info(spaces_info)
@@ -102,7 +102,7 @@ def update_space():
 #SELECT SpaceId, Space.isAvailable as Available
 #FROM Space
 #WHERE isAvailable =True; -- View all available rooms; 3.4
-@spaces.route('/spaces/route5', methods=['GET'])
+@spaces.route('/spaces/viewavailable', methods=['GET'])
 def get_avail_spaces_conditions():
     cursor = db.get_db().cursor()
     cursor.execute('select SpaceId, Spaces.isAvailable as Available \
