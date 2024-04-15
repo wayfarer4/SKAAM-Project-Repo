@@ -10,12 +10,13 @@ people = Blueprint('people', __name__)
 #WHERE SpaceId = 4; -- Book a space; 1.1 Part 1
 
 @people.route('/people/updatetime', methods=['PUT'])
-def updateSpace():
+def updateSpace(spacesId):
     space_info = request.json
     current_app.logger.info(space_info)
     isAvailable= space_info['isAvailable']
 
-    query = 'UPDATE Spaces SET isAvailable = %s where SpaceId = %s'
+    query = 'UPDATE Spaces SET isAvailable = false where SpaceId = '
+    query += str(spacesId)
     data = (isAvailable)
     cursor = db.get_db().cursor()
     r = cursor.execute(query, data)
