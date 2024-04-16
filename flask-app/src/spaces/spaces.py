@@ -83,8 +83,6 @@ def delete_space():
     return 'space removed!'
 
 
-<<<<<<< HEAD
-=======
 #UPDATE Space
 #SET isAvailable = false
 #WHERE SpaceId = 3; -- Update a room to be offline; 3.3
@@ -101,7 +99,6 @@ def update_space():
     r = cursor.execute(query)
     db.get_db().commit()
     return 'room offline'
->>>>>>> 0fb729c13eb4cdd15c8497c8c8208b0a20ebd1df
 
 #SELECT SpaceId, Space.isAvailable as Available
 #FROM Space
