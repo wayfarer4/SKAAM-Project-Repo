@@ -196,13 +196,15 @@ def prof_view_building_manager(profId):
 #JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId
 #JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID
 #WHERE p.StaffId = 1; -- Report an incident; 2.3
-@people.route('/people/reportincident', methods=['GET'])
-def prof_view_cleaner(profId):
+@people.route('/people/getCleaner', methods=['GET'])
+def prof_view_cleaner():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    profId = the_data['prof_id']
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT Phone FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
-                   + ' JOIN Spaces S ON C2.SpaceId = S.SpaceId JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID'
-                    + ' JOIN BuildingManager m ON b.StaffID = m.StaffID'
-                    + ' WHERE p.StaffId = ' + str(profId))
+    cursor.execute('SELECT DISTINCT p.FirstName AS profFirstName, c.ClassName, c3.FirstName AS CleanerFirstName, c3.LastName AS CleanerLastName, c3.cleanerId FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
+                   + ' JOIN Spaces S ON C2.SpaceId = S.SpaceId JOIN SpaceCleaners s2 ON S.SpaceId = s2.SpaceId JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID'
+                    + ' WHERE p.StaffId = ' + profId)
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
@@ -213,6 +215,30 @@ def prof_view_cleaner(profId):
     the_response.mimetype = 'application/json'
     return the_response
 
+
+@people.route('/people/reportIncident', methods=['POST'])
+def prof_report_incident():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    incidentId = str().join([str(random.randint(0, 9)) for _ in range(8)])
+    incidentType = the_data['IncidentType']
+    incidentTime = "CURRENT_TIMESTAMP"
+    incidentName = the_data['IncidentName']
+    cleanerId = the_data['CleanerId']
+
+
+    incident = the_data['Incident']
+    query = 'insert into Incident (IncidentId, IncidentType, IncidentTime, IncidentName, CleanerId) values ('
+    query += incidentId + ', "'
+    query += incidentType + '", '
+    query += incidentTime + ', "'
+    query += incidentName + '", '
+    query += str(cleanerId) + ')'
+    current_app.logger.info(query)
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+    return 'Success!'
 
 #SELECT PhoneNum
 #FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
