@@ -16,8 +16,10 @@ def update_checkIn():
     current_app.logger.info(booking_detail_info)
     bookingId = booking_detail_info['BookingId']
 
-    query = 'UPDATE BookingDetails SET CheckedIn = CURRENT_TIMESTAMP where id ='
+    query = 'UPDATE BookingDetails SET CheckedIn = CURRENT_TIMESTAMP WHERE BookingId = '
     query += str(bookingId)
+    current_app.logger.info(query)
+
     cursor = db.get_db().cursor()
     r = cursor.execute(query)
     db.get_db().commit()

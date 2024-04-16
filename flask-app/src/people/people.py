@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, make_response, current_app
 import json
+import random
 from src import db
 
 people = Blueprint('people', __name__)
@@ -35,20 +36,35 @@ def book_space():
     current_app.logger.info(the_data)
 
     #extracting the variable
-    bookingid = the_data['booking_id']
-    spaceid = the_data['space_id']
-    nuid = the_data['nuid']
+    #bookingid = the_data['booking_id']
+    spaceid = the_data['SpaceId']
+    nuid = the_data['NUId']
+    bookingName = the_data['BookingName']
+    bookingLength = the_data['BookingLength']
+
+    booking_id = ''.join([str(random.randint(0, 9)) for _ in range(8)])
 
     # Constructing the query
-    query = 'insert into Bookings (BookingId, SpaceId, NUId) values ("'
-    query += str(bookingid) + '", "'
-    query += str(spaceid) + '", "'
+    query = 'insert into Booking (BookingId, SpaceId, NUId) values ('
+    query += booking_id + ', '
+    query += str(spaceid) + ', '
     query += str(nuid) + ')'
     current_app.logger.info(query)
+
+    query2 = 'insert into BookingDetails (BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength) values ('
+    query2 += booking_id + ', "'
+    query2 += bookingName + '", '
+    query2 += 'CURRENT_TIMESTAMP, '
+    query2 += 'NULL, '
+    query2 += str(bookingLength) + ')'
+    current_app.logger.info(query2)
+
 
     # executing and committing the insert statement 
     cursor = db.get_db().cursor()
     cursor.execute(query)
+    cursor.execute(query2)
+
     db.get_db().commit()
     
     return 'Success!'
@@ -95,7 +111,7 @@ def book_space_details():
 #JOIN Booking B on S.SpaceId = B.SpaceId
 #JOIN BookingDetails BD on B.BookingId = BD.BookingId
 #WHERE p.StaffId = 1; -- View professor's own booking details; 2.1
-@people.route('/people/viewbooking', methods=['GET'])
+@people.route('/people/viewprofbooking', methods=['GET'])
 def prof_view_booking_details():
     cursor = db.get_db().cursor()
     cursor.execute('SELECT BookingNameEvent, CheckedIn, BookingTime FROM Professor p JOIN Class c ON' 
@@ -112,8 +128,42 @@ def prof_view_booking_details():
     the_response.mimetype = 'application/json'
     return the_response
 
+@people.route('/people/getStudents', methods=['GET'])
+def get_students():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT * FROM Student')
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 
+@people.route('/people/viewstudentbooking', methods=['GET'])
+def view_booking_details():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    studentId = the_data['student_id']
+
+    query = 'SELECT * FROM Student s JOIN Booking b on s.NUId = b.NUId JOIN '
+    query += 'BookingDetails BD on b.BookingId = BD.BookingId WHERE s.NUId = ' + str(studentId)
+    current_app.logger.info(query)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 #SELECT Email
 #FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
