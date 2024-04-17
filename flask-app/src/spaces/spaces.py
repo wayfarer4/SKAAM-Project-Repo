@@ -5,7 +5,22 @@ from src import db
 
 spaces = Blueprint('spaces', __name__)
 
-#in use
+@spaces.route('/spaces/setSpaceUnavailable', methods=['PUT'])
+def updateSpace():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    spaceId = the_data['SpaceId']
+
+    query = 'UPDATE Spaces SET isAvailable = 0 where SpaceId = '
+    query += str(spaceId)  
+
+    current_app.logger.info(query)
+
+    cursor = db.get_db().cursor()
+    r = cursor.execute(query)
+    db.get_db().commit()
+    return 'check in'
+
 @spaces.route('/spaces/viewbmspaces', methods=['GET'])
 def get_bm_spaces():
     the_data = request.json
@@ -26,7 +41,6 @@ def get_bm_spaces():
     the_response.mimetype = 'application/json'
     return the_response
 
-#in use
 @spaces.route('/spaces/addspace', methods=['POST'])
 def add_space():
     the_data = request.json
@@ -43,7 +57,6 @@ def add_space():
     return 'space added!'
 
 
-#in use
 @spaces.route('/spaces/updateroom', methods=['PUT'])
 def update_space():
     spaces_info = request.json
@@ -59,7 +72,6 @@ def update_space():
     db.get_db().commit()
     return 'space updated!'
 
-#in use
 @spaces.route('/spaces/viewavailable', methods=['GET'])
 def get_avail_spaces_conditions():
     cursor = db.get_db().cursor()
@@ -75,7 +87,6 @@ def get_avail_spaces_conditions():
     the_response.mimetype = 'application/json'
     return the_response
 
-#in use
 @spaces.route('/spaces/get_building_info', methods=['GET'])
 def get_building_info():
     the_data = request.json

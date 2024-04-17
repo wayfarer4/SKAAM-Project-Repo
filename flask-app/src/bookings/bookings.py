@@ -1,10 +1,44 @@
+import random
 from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
 bookings = Blueprint('bookings', __name__)
 
-#in use
+@bookings.route('/bookings/book', methods=['POST'])
+def book_space():
+    the_data = request.json
+    current_app.logger.info(the_data)
+
+    spaceid = the_data['SpaceId']
+    nuid = the_data['NUId']
+    bookingName = the_data['BookingName']
+    bookingLength = the_data['BookingLength']
+
+    booking_id = ''.join([str(random.randint(0, 9)) for _ in range(8)])
+
+    query = 'insert into Booking (BookingId, SpaceId, NUId) values ('
+    query += booking_id + ', '
+    query += str(spaceid) + ', '
+    query += str(nuid) + ')'
+    current_app.logger.info(query)
+
+    query2 = 'insert into BookingDetails (BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength) values ('
+    query2 += booking_id + ', "'
+    query2 += bookingName + '", '
+    query2 += 'CURRENT_TIMESTAMP, '
+    query2 += 'NULL, '
+    query2 += str(bookingLength) + ')'
+    current_app.logger.info(query2)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    cursor.execute(query2)
+
+    db.get_db().commit()
+    
+    return 'Success!'
+
 @bookings.route('/bookings/checkin', methods=['PUT'])
 def update_checkIn():
     booking_detail_info = request.json
@@ -20,7 +54,6 @@ def update_checkIn():
     db.get_db().commit()
     return 'check in time updated!'
 
-#in use
 @bookings.route('/bookings/booking_in_building', methods=['GET'])
 def booking_in_building():
     app_info = request.json
@@ -41,7 +74,6 @@ def booking_in_building():
     return the_response
 
 
-#in use
 @bookings.route('/bookings/cancel', methods=['DELETE'])
 def cancel_booking():
     booking_detail_info = request.json
