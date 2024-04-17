@@ -276,10 +276,15 @@ def prof_report_incident():
 #WHERE p.StaffId  = 1; -- Call IT; 2.4
 @people.route('/people/callIT', methods=['GET'])
 def prof_view_assigned_it():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    profId = the_data['prof_id']
+
+
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT PhoneNum FROM Professor p JOIN Class c ON p.StaffId = c.StaffId' 
-                   + ' JOIN Classroom C2 ON c.CourseId = C2.CourseId JOIN ITPerson i ON C2.StaffId'
-                    + ' WHERE p.StaffId = ' + str(7661382628))
+    cursor.execute('SELECT i.StaffId, className, i.PhoneNum, classroomId FROM Professor p JOIN Class c ON p.StaffId = c.StaffId' 
+                   + ' JOIN Classroom C2 ON c.CourseId = C2.CourseId JOIN ITPerson i ON C2.StaffId = i.StaffId'
+                    + ' WHERE p.StaffId = ' + str(profId))
     row_headers = [x[0] for x in cursor.description]
     json_data = []
     theData = cursor.fetchall()
