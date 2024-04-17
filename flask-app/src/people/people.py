@@ -221,13 +221,11 @@ def prof_report_incident():
     the_data = request.json
     current_app.logger.info(the_data)
     incidentId = str().join([str(random.randint(0, 9)) for _ in range(8)])
-    incidentType = the_data['IncidentType']
+    incidentType = the_data['incident_type']
     incidentTime = "CURRENT_TIMESTAMP"
-    incidentName = the_data['IncidentName']
-    cleanerId = the_data['CleanerId']
+    incidentName = the_data['incident_name']
+    cleanerId = the_data['cleanerId']
 
-
-    incident = the_data['Incident']
     query = 'insert into Incident (IncidentId, IncidentType, IncidentTime, IncidentName, CleanerId) values ('
     query += incidentId + ', "'
     query += incidentType + '", '
