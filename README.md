@@ -32,4 +32,4 @@ This app facilitates various functionalities:
 - Melissa Rejuan
 
 # Project Presentation
-- [View presentation here!](https://drive.google.com/file/d/1odHU0BULc3CqjupIa51lCtRSiUACPWHd/view?usp=drive_link)
+- [View presentation video here!](https://drive.google.com/file/d/1odHU0BULc3CqjupIa51lCtRSiUACPWHd/view?usp=drive_link)
