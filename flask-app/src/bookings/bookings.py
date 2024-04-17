@@ -76,13 +76,16 @@ def update_booking_length():
 # WHERE BookingId = 1; -- Cancel booking; 1.6
 @bookings.route('/bookings/cancel', methods=['DELETE'])
 def cancel_booking():
-    
+    booking_detail_info = request.json
+    current_app.logger.info(booking_detail_info)
+    bookingId = booking_detail_info['BookingId']
+
     # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
 
     # Constructing the query
-    query = 'DELETE FROM BookingDetails WHERE BookingId = %s'
+    query = 'DELETE FROM Booking WHERE BookingId = ' + str(bookingId)
     current_app.logger.info(query)
 
     # executing and committing the insert statement 
