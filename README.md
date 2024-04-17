@@ -25,8 +25,9 @@ This app facilitates various functionalities:
 
 # Project Members
 
-- Amulya Jayam
+- Amulya
 - Aniket Chaudhry
-- Karina
-- Sarayu Pininti
-- Melissa Rejuan
+- Karina Mehta
+- Sarayu
+- Melissa
+- 
