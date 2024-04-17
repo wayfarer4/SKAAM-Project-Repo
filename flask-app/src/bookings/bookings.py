@@ -34,14 +34,11 @@ def update_checkIn():
 # Add a PUT /Booking route that will update the booking details information
 @bookings.route('/bookings/booking_in_building', methods=['GET'])
 def booking_in_building():
-    booking_detail_info = request.json
-    current_app.logger.info(booking_detail_info)
-    staff_id = booking_detail_info['staff_id']
+    app_info = request.json
+    current_app.logger.info(app_info)
+    staff_id = app_info['staff_id']
 
-    query = 'SELECT BookingNameEvent, BookingId FROM BuildingManager bm JOIN Building b on bm.StaffId = b.StaffId' 
-    + ' JOIN Spaces s on s.BuildingId = b.BuildingId JOIN Booking bo on bo.SpaceId = s.SpaceId JOIN BookingDetails bd'
-    + ' ON bd.BookingId = bo.BookingId WHERE bm.StaffId ='
-    + str(staff_id)
+    query = 'SELECT bo.BookingId FROM BuildingManager bm JOIN Building b ON bm.StaffId = b.StaffId' + ' JOIN Spaces s ON s.BuildingId = b.BuildingId JOIN Booking bo ON bo.SpaceId = s.SpaceId  WHERE bm.StaffId = ' + str(staff_id)
     cursor = db.get_db().cursor()
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
