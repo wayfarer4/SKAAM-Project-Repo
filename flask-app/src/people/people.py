@@ -215,6 +215,37 @@ def prof_view_cleaner():
     the_response.mimetype = 'application/json'
     return the_response
 
+@people.route('/people/findassignedclasses', methods=['GET'])
+def find_assigned_classes():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    profId = the_data['prof_id']
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT ClassName, CourseId FROM Class WHERE StaffId = ' + profId)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
+
+@people.route('/people/editassignedclasses', methods=['PUT'])
+def edit_assigned_classes():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    classId = the_data['CourseId']
+    newClassName = the_data['ClassName']
+    cursor = db.get_db().cursor()
+    query = 'UPDATE Class SET ClassName = "' + newClassName + '" WHERE CourseId = ' + str(classId)
+    current_app.logger.info(query)
+    cursor.execute(query )
+    db.get_db().commit()
+    return 'Success!'
+
 
 @people.route('/people/reportIncident', methods=['POST'])
 def prof_report_incident():
