@@ -30,3 +30,6 @@ This app facilitates various functionalities:
 - Karina Mehta
 - Sarayu Pininti
 - Melissa Rejuan
+
+# Project Presentation
+- [View presentation here!](https://drive.google.com/file/d/1odHU0BULc3CqjupIa51lCtRSiUACPWHd/view?usp=drive_link)
