@@ -86,7 +86,7 @@ def delete_space():
 #UPDATE Space
 #SET isAvailable = false
 #WHERE SpaceId = 3; -- Update a room to be offline; 3.3
-@spaces.route('/sapces/offlineroom', methods=['PUT'])
+@spaces.route('/spaces/offlineroom', methods=['PUT'])
 def update_space():
     spaces_info = request.json
     current_app.logger.info(spaces_info)
@@ -124,7 +124,7 @@ def get_building_info():
     current_app.logger.info(the_data)
     staffId = the_data['staff_id']
     cursor = db.get_db().cursor()
-    query = 'SELECT * FROM Building b JOIN BuildingManager bm ON p.StaffId = c.StaffId' + ' WHERE b.StaffId = ' + str(staffId)
+    query = 'SELECT * FROM Building b JOIN BuildingManager bm ON b.StaffId = bm.StaffId' + ' WHERE bm.StaffId = ' + str(staffId)
     current_app.logger.info(query)
     cursor.execute(query)
     row_headers = [x[0] for x in cursor.description]
