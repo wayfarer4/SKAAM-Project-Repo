@@ -27,6 +27,6 @@ This app facilitates various functionalities:
 
 - Amulya Jayam
 - Aniket Chaudhry
-- Karina
+- Karina Mehta
 - Sarayu Pininti
 - Melissa Rejuan
