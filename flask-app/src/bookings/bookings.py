@@ -32,18 +32,27 @@ def update_checkIn():
 #WHERE BookingId = 4; -- Change Booking Name; 1.4
 
 # Add a PUT /Booking route that will update the booking details information
-@bookings.route('/bookings/updatename', methods=['PUT'])
-def update_booking_name():
+@bookings.route('/bookings/booking_in_building', methods=['GET'])
+def booking_in_building():
     booking_detail_info = request.json
     current_app.logger.info(booking_detail_info)
-    BookingNameEvent = booking_detail_info['BookingNameEvent']
+    staff_id = booking_detail_info['staff_id']
 
-    query = 'UPDATE BookingDetails SET BookingNameEvent = %s where id = %s'
-    data = (BookingNameEvent)
+    query = 'SELECT BookingNameEvent, BookingId FROM BuildingManager bm JOIN Building b on bm.StaffId = b.StaffId' 
+    + ' JOIN Spaces s on s.BuildingId = b.BuildingId JOIN Booking bo on bo.SpaceId = s.SpaceId JOIN BookingDetails bd'
+    + ' ON bd.BookingId = bo.BookingId WHERE bm.StaffId ='
+    + str(staff_id)
     cursor = db.get_db().cursor()
-    r = cursor.execute(query, data)
-    db.get_db().commit()
-    return 'booking name updated!'
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
 
 ### ROUTE 3 FOR BOOKING
 #UPDATE BookingDetails
