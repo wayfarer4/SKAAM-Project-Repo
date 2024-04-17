@@ -173,9 +173,13 @@ def view_booking_details():
 #JOIN BuildingManager m ON b.StaffID = m.StaffID
 #WHERE p.StaffId = 1; -- Call Building Manager; 2.2
 @people.route('/people/callbuildingmanager', methods=['GET'])
-def prof_view_building_manager(profId):
+def prof_view_building_manager():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    profId = the_data['prof_id']
+
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT Email FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
+    cursor.execute('SELECT m.Email, c.ClassName, C2.ClassroomId FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
                    + ' JOIN Spaces S ON C2.SpaceId = S.SpaceId JOIN Building b ON S.BuildingID = b.BuildingID'
                     + ' JOIN BuildingManager m ON b.StaffID = m.StaffID'
                     + ' WHERE p.StaffId = ' + str(profId))
@@ -202,7 +206,7 @@ def prof_view_cleaner():
     current_app.logger.info(the_data)
     profId = the_data['prof_id']
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT DISTINCT p.FirstName AS profFirstName, c.ClassName, c3.FirstName AS CleanerFirstName, c3.LastName AS CleanerLastName, c3.cleanerId FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
+    cursor.execute('SELECT DISTINCT p.FirstName AS profFirstName, c.ClassName, c3.FirstName AS CleanerFirstName, c3.LastName AS CleanerLastName, c3.cleanerId, c3.phone AS PhoneNumber FROM Professor p JOIN Class c ON p.StaffId = c.StaffId JOIN Classroom C2 ON c.CourseId = C2.CourseId' 
                    + ' JOIN Spaces S ON C2.SpaceId = S.SpaceId JOIN SpaceCleaners s2 ON S.SpaceId = s2.SpaceId JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID'
                     + ' WHERE p.StaffId = ' + profId)
     row_headers = [x[0] for x in cursor.description]
