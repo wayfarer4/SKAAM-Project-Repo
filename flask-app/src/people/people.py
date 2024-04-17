@@ -5,10 +5,6 @@ from src import db
 
 people = Blueprint('people', __name__)
 
-### ROUTE 1 FOR PEOPLE
-#UPDATE Space
-#SET isAvailable = false
-#WHERE SpaceId = 4; -- Book a space; 1.1 Part 1
 
 @people.route('/people/updatetime', methods=['PUT'])
 def updateSpace():
@@ -27,16 +23,11 @@ def updateSpace():
     return 'check in'
 
 
-#INSERT INTO Booking(BookingId, SpaceId, NUId)
-#VALUES (4, 4, 1001); -- Book a space; 1.1 Part 2
 @people.route('/people/book', methods=['POST'])
 def book_space():
-    # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
 
-    #extracting the variable
-    #bookingid = the_data['booking_id']
     spaceid = the_data['SpaceId']
     nuid = the_data['NUId']
     bookingName = the_data['BookingName']
@@ -44,7 +35,6 @@ def book_space():
 
     booking_id = ''.join([str(random.randint(0, 9)) for _ in range(8)])
 
-    # Constructing the query
     query = 'insert into Booking (BookingId, SpaceId, NUId) values ('
     query += booking_id + ', '
     query += str(spaceid) + ', '
@@ -59,8 +49,6 @@ def book_space():
     query2 += str(bookingLength) + ')'
     current_app.logger.info(query2)
 
-
-    # executing and committing the insert statement 
     cursor = db.get_db().cursor()
     cursor.execute(query)
     cursor.execute(query2)
@@ -72,22 +60,17 @@ def book_space():
     
 
 
-#INSERT INTO BookingDetails(BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength)
-#VALUES (4, 'Study', '2024-04-03 4:00:00', NULL, '01:00:00'); -- Book a space; 1.1 Part 3
 @people.route('/people/bookingdetails', methods=['POST'])
 def book_space_details():
-    # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
 
-    #extracting the variable
     bookingid = the_data['booking_id']
     bookingName = the_data['booking_name_event']
     bookingTime = the_data['nuid']
     checkedin = the_data['checked_in']
     bookingLength = the_data['booking_length']
 
-    # Constructing the query
     query = 'insert into BookingsDetails (BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength) values ("'
     query += str(bookingid) + '", "'
     query += bookingName + '", "'
@@ -96,7 +79,6 @@ def book_space_details():
     query += str(bookingLength) + ')'
     current_app.logger.info(query)
 
-    # executing and committing the insert statement 
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
@@ -104,13 +86,6 @@ def book_space_details():
     return 'Success!'
     
 
-#SELECT BookingNameEvent, CheckedIn, BookingTime
-#FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
-#JOIN Classroom C2 on c.CourseId = C2.CourseId
-#JOIN Space S on C2.SpaceId = S.SpaceId
-#JOIN Booking B on S.SpaceId = B.SpaceId
-#JOIN BookingDetails BD on B.BookingId = BD.BookingId
-#WHERE p.StaffId = 1; -- View professor's own booking details; 2.1
 @people.route('/people/viewprofbooking', methods=['GET'])
 def prof_view_booking_details():
     cursor = db.get_db().cursor()
@@ -165,13 +140,6 @@ def view_booking_details():
     the_response.mimetype = 'application/json'
     return the_response
 
-#SELECT Email
-#FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
-#JOIN Classroom C2 ON c.CourseId = C2.CourseId
-#JOIN Space S ON C2.SpaceId = S.SpaceId
-#JOIN Building b ON S.BuildingID = b.BuildingID
-#JOIN BuildingManager m ON b.StaffID = m.StaffID
-#WHERE p.StaffId = 1; -- Call Building Manager; 2.2
 @people.route('/people/callbuildingmanager', methods=['GET'])
 def prof_view_building_manager():
     the_data = request.json
@@ -193,13 +161,7 @@ def prof_view_building_manager():
     the_response.mimetype = 'application/json'
     return the_response
 
-#SELECT Phone
-#FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
-#JOIN Classroom C2 ON c.CourseId = C2.CourseId
-#JOIN Space S ON C2.SpaceId = S.SpaceId
-#JOIN Space_Cleaners s2 ON S.SpaceId = s2.SpaceId
-#JOIN Cleaner c3 ON s2.CleanerID = c3.CleanerID
-#WHERE p.StaffId = 1; -- Report an incident; 2.3
+
 @people.route('/people/getCleaner', methods=['GET'])
 def prof_view_cleaner():
     the_data = request.json
@@ -273,11 +235,7 @@ def prof_report_incident():
     db.get_db().commit()
     return 'Success!'
 
-#SELECT PhoneNum
-#FROM Professor p JOIN Class c ON p.StaffId = c.StaffId
-#JOIN Classroom C2 ON c.CourseId = C2.CourseId
-#JOIN ITPerson i ON C2.StaffId
-#WHERE p.StaffId  = 1; -- Call IT; 2.4
+
 @people.route('/people/callIT', methods=['GET'])
 def prof_view_assigned_it():
     the_data = request.json
@@ -299,13 +257,6 @@ def prof_view_assigned_it():
     the_response.mimetype = 'application/json'
     return the_response
 
-
-# NOTE: for recurring meetings, I want this to be 
-# where someone can select a number of recurring meetings to hold
-# and python loops insert statements
-
-#INSERT INTO Booking(BookingId, SpaceId, NUId)
-#VALUES (5, 5, 1005); -- Set weekly scheduled meetings; 4.6 Part 1
 
 
 

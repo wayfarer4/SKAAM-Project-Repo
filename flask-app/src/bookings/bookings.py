@@ -4,12 +4,6 @@ from src import db
 
 bookings = Blueprint('bookings', __name__)
 
-### ROUTE 1 FOR BOOKING
-#UPDATE BookingDetails
-#SET CheckedIn = '2024-04-03 03:30:00'
-#WHERE BookingId = 4; -- Check in; 1.3
-
-# Add a PUT /Booking route that will update the booking details information
 @bookings.route('/bookings/checkin', methods=['PUT'])
 def update_checkIn():
     booking_detail_info = request.json
@@ -26,12 +20,6 @@ def update_checkIn():
     return 'check in time updated!'
 
 
-### ROUTE 2 FOR BOOKING
-#UPDATE BookingDetails
-#SET BookingNameEvent = 'Study Session'
-#WHERE BookingId = 4; -- Change Booking Name; 1.4
-
-# Add a PUT /Booking route that will update the booking details information
 @bookings.route('/bookings/booking_in_building', methods=['GET'])
 def booking_in_building():
     app_info = request.json
@@ -51,12 +39,6 @@ def booking_in_building():
     the_response.mimetype = 'application/json'
     return the_response
 
-### ROUTE 3 FOR BOOKING
-#UPDATE BookingDetails
-#SET BookingLength = '01:30:00'
-#WHERE BookingId = 4; -- Extend the booking; 1.5
-
-# Add a PUT /Booking route that will update the booking details information
 @bookings.route('/bookings/updatelength', methods=['PUT'])
 def update_booking_length():
     booking_detail_info = request.json
@@ -70,25 +52,18 @@ def update_booking_length():
     db.get_db().commit()
     return 'booking length updated!'
 
-
-### ROUTE 4 FOR BOOKING
-# DELETE FROM BookingDetails
-# WHERE BookingId = 1; -- Cancel booking; 1.6
 @bookings.route('/bookings/cancel', methods=['DELETE'])
 def cancel_booking():
     booking_detail_info = request.json
     current_app.logger.info(booking_detail_info)
     bookingId = booking_detail_info['BookingId']
 
-    # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
 
-    # Constructing the query
     query = 'DELETE FROM Booking WHERE BookingId = ' + str(bookingId)
     current_app.logger.info(query)
 
-    # executing and committing the insert statement 
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()

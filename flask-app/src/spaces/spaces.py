@@ -42,10 +42,6 @@ def get_bm_spaces():
     return the_response
 
 
-
-
-#INSERT INTO Space (SpaceId, BuildingId)
-#   VALUES (4, 2); -- Adding space; 3.1
 @spaces.route('/spaces/addspace', methods=['POST'])
 def add_space():
     the_data = request.json
@@ -61,24 +57,16 @@ def add_space():
     db.get_db().commit()
     return 'space added!'
 
-
-
-
-#DELETE FROM Space
-#   WHERE SpaceId = 4; -- Removing a space; 3.2
 @spaces.route('/spaces/removespace', methods=['DELETE'])
 def delete_space():
     
-    # collecting data from the request object 
     the_data = request.json
     current_app.logger.info(the_data)
     spaceId = the_data['SpaceId']
 
-    # Constructing the query
     query = 'DELETE FROM Spaces WHERE SpaceId = ' + str(spaceId)
     current_app.logger.info(query)
 
-    # executing and committing the insert statement 
     cursor = db.get_db().cursor()
     cursor.execute(query)
     db.get_db().commit()
@@ -86,9 +74,6 @@ def delete_space():
     return 'space removed!'
 
 
-#UPDATE Space
-#SET isAvailable = false
-#WHERE SpaceId = 3; -- Update a room; 3.3
 @spaces.route('/spaces/updateroom', methods=['PUT'])
 def update_space():
     spaces_info = request.json
@@ -104,9 +89,6 @@ def update_space():
     db.get_db().commit()
     return 'space updated!'
 
-#SELECT SpaceId, Space.isAvailable as Available
-#FROM Space
-#WHERE isAvailable =True; -- View all available rooms; 3.4
 @spaces.route('/spaces/viewavailable', methods=['GET'])
 def get_avail_spaces_conditions():
     cursor = db.get_db().cursor()
