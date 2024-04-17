@@ -118,3 +118,22 @@ def get_avail_spaces_conditions():
     the_response.mimetype = 'application/json'
     return the_response
 
+@spaces.route('/spaces/get_building_info', methods=['GET'])
+def get_building_info():
+    the_data = request.json
+    current_app.logger.info(the_data)
+    staffId = the_data['staff_id']
+    cursor = db.get_db().cursor()
+    query = 'SELECT * FROM Building b JOIN BuildingManager bm ON p.StaffId = c.StaffId' + ' WHERE b.StaffId = ' + str(staffId)
+    current_app.logger.info(query)
+    cursor.execute(query)
+    row_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(row_headers, row)))
+    the_response = make_response(jsonify(json_data))
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response
+
