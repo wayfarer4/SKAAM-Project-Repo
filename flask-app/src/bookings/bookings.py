@@ -4,6 +4,7 @@ from src import db
 
 bookings = Blueprint('bookings', __name__)
 
+#in use
 @bookings.route('/bookings/checkin', methods=['PUT'])
 def update_checkIn():
     booking_detail_info = request.json
@@ -19,7 +20,7 @@ def update_checkIn():
     db.get_db().commit()
     return 'check in time updated!'
 
-
+#in use
 @bookings.route('/bookings/booking_in_building', methods=['GET'])
 def booking_in_building():
     app_info = request.json
@@ -39,19 +40,8 @@ def booking_in_building():
     the_response.mimetype = 'application/json'
     return the_response
 
-@bookings.route('/bookings/updatelength', methods=['PUT'])
-def update_booking_length():
-    booking_detail_info = request.json
-    current_app.logger.info(booking_detail_info)
-    BookingLength = booking_detail_info['BookingLength']
 
-    query = 'UPDATE BookingDetails SET BookingLength = %s where id = %s'
-    data = (BookingLength)
-    cursor = db.get_db().cursor()
-    r = cursor.execute(query, data)
-    db.get_db().commit()
-    return 'booking length updated!'
-
+#in use
 @bookings.route('/bookings/cancel', methods=['DELETE'])
 def cancel_booking():
     booking_detail_info = request.json

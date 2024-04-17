@@ -5,8 +5,8 @@ from src import db
 
 people = Blueprint('people', __name__)
 
-
-@people.route('/people/updatetime', methods=['PUT'])
+#in use
+@people.route('/people/setSpaceUnavailable', methods=['PUT'])
 def updateSpace():
     the_data = request.json
     current_app.logger.info(the_data)
@@ -22,7 +22,7 @@ def updateSpace():
     db.get_db().commit()
     return 'check in'
 
-
+#in use
 @people.route('/people/book', methods=['POST'])
 def book_space():
     the_data = request.json
@@ -57,52 +57,8 @@ def book_space():
     
     return 'Success!'
     
-    
 
-
-@people.route('/people/bookingdetails', methods=['POST'])
-def book_space_details():
-    the_data = request.json
-    current_app.logger.info(the_data)
-
-    bookingid = the_data['booking_id']
-    bookingName = the_data['booking_name_event']
-    bookingTime = the_data['nuid']
-    checkedin = the_data['checked_in']
-    bookingLength = the_data['booking_length']
-
-    query = 'insert into BookingsDetails (BookingId, BookingNameEvent, BookingTime, CheckedIn, BookingLength) values ("'
-    query += str(bookingid) + '", "'
-    query += bookingName + '", "'
-    query += str(bookingTime) + '", "'
-    query += str(checkedin) + '", "'
-    query += str(bookingLength) + ')'
-    current_app.logger.info(query)
-
-    cursor = db.get_db().cursor()
-    cursor.execute(query)
-    db.get_db().commit()
-    
-    return 'Success!'
-    
-
-@people.route('/people/viewprofbooking', methods=['GET'])
-def prof_view_booking_details():
-    cursor = db.get_db().cursor()
-    cursor.execute('SELECT BookingNameEvent, CheckedIn, BookingTime FROM Professor p JOIN Class c ON' 
-                   + ' p.StaffId = c.StaffId JOIN Classroom C2 on c.CourseId = C2.CourseId JOIN Spaces S'
-                    + ' on C2.SpaceId = S.SpaceId JOIN Booking B on S.SpaceId = B.SpaceId JOIN '
-                    + 'BookingDetails BD on B.BookingId = BD.BookingId WHERE p.StaffId = ' + str(2958467899))
-    row_headers = [x[0] for x in cursor.description]
-    json_data = []
-    theData = cursor.fetchall()
-    for row in theData:
-        json_data.append(dict(zip(row_headers, row)))
-    the_response = make_response(jsonify(json_data))
-    the_response.status_code = 200
-    the_response.mimetype = 'application/json'
-    return the_response
-
+#in use
 @people.route('/people/getStudents', methods=['GET'])
 def get_students():
     cursor = db.get_db().cursor()
@@ -117,7 +73,7 @@ def get_students():
     the_response.mimetype = 'application/json'
     return the_response
 
-
+#in use
 @people.route('/people/viewstudentbooking', methods=['GET'])
 def view_booking_details():
     the_data = request.json
@@ -140,6 +96,7 @@ def view_booking_details():
     the_response.mimetype = 'application/json'
     return the_response
 
+#in use
 @people.route('/people/callbuildingmanager', methods=['GET'])
 def prof_view_building_manager():
     the_data = request.json
@@ -161,7 +118,7 @@ def prof_view_building_manager():
     the_response.mimetype = 'application/json'
     return the_response
 
-
+#in use
 @people.route('/people/getCleaner', methods=['GET'])
 def prof_view_cleaner():
     the_data = request.json
@@ -181,6 +138,7 @@ def prof_view_cleaner():
     the_response.mimetype = 'application/json'
     return the_response
 
+#in use
 @people.route('/people/findassignedclasses', methods=['GET'])
 def find_assigned_classes():
     the_data = request.json
@@ -198,7 +156,7 @@ def find_assigned_classes():
     the_response.mimetype = 'application/json'
     return the_response
 
-
+#in use
 @people.route('/people/editassignedclasses', methods=['PUT'])
 def edit_assigned_classes():
     the_data = request.json
@@ -212,7 +170,7 @@ def edit_assigned_classes():
     db.get_db().commit()
     return 'Success!'
 
-
+#in use
 @people.route('/people/reportIncident', methods=['POST'])
 def prof_report_incident():
     the_data = request.json
@@ -235,7 +193,7 @@ def prof_report_incident():
     db.get_db().commit()
     return 'Success!'
 
-
+#in use
 @people.route('/people/callIT', methods=['GET'])
 def prof_view_assigned_it():
     the_data = request.json
